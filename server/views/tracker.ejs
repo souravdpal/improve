@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Progress - AI Therapist</title>
+    <link rel="stylesheet" href="/css/tracker.css">
+    <script src="/js/track.js" defer></script>
+</head>
+<body>
+    <div class="track-container">
+        <header class="track-header">
+            <a  class="nav-icon" onclick="io()">←</a>
+            <h1>Track Your Progress</h1>
+        </header>
+        <div class="track-actions">
+            <button class="action-btn" onclick="openTrackModal()">Add Tracking</button>
+            <button class="action-btn" onclick="analyzeWithHina()">Analyze with HINA</button>
+        </div>
+        <div class="dashboard">
+            <div class="dashboard-section">
+                <h3>Mood</h3>
+                <p id="dash-mood">No data yet</p>
+            </div>
+            <div class="dashboard-section">
+                <h3>Bad Habits</h3>
+                <p id="dash-bad-habits">No data yet</p>
+            </div>
+            <div class="dashboard-section">
+                <h3>Good Habits</h3>
+                <p id="dash-good-habits">No data yet</p>
+            </div>
+            <div class="dashboard-section">
+                <h3>Works</h3>
+                <p id="dash-works">No data yet</p>
+            </div>
+            <div class="dashboard-section">
+                <h3>Focus</h3>
+                <p id="dash-focus">No data yet</p>
+            </div>
+            <div class="dashboard-section">
+                <h3>Distractions</h3>
+                <p id="dash-distractions">No data yet</p>
+            </div>
+            <div class="dashboard-section">
+                <h3>What to Work On</h3>
+                <p id="dash-work-on">No data yet</p>
+            </div>
+            <div class="dashboard-section">
+                <h3>What to Avoid</h3>
+                <p id="dash-avoid">No data yet</p>
+            </div>
+            <div class="dashboard-section">
+                <h3>Summary</h3>
+                <p id="dash-summary">No data yet</p>
+            </div>
+            <div class="dashboard-section analysis">
+                <h3>HINA's Analysis</h3>
+                <p id="dash-analysis">No analysis yet</p>
+            </div>
+        </div>
+        <h2>Past Entries</h2>
+        <div class="track-cards" id="track-cards">
+            <!-- Tracking cards will be appended here -->
+        </div>
+        <div class="track-modal" id="trackModal">
+            <div class="track-content">
+                <h2>New Tracking Entry</h2>
+                <select id="track-mood">
+                    <option value="happy">Happy</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="sad">Sad</option>
+                    <option value="stressed">Stressed</option>
+                </select>
+                <input type="text" id="track-bad-habits" placeholder="Bad habits (e.g., Procrastination)">
+                <input type="text" id="track-good-habits" placeholder="Good habits (e.g., Meditation)">
+                <input type="text" id="track-works" placeholder="Works (e.g., Finish report)">
+                <input type="text" id="track-focus" placeholder="Focus (e.g., Deep work for 2 hours)">
+                <input type="text" id="track-distractions" placeholder="Distractions (e.g., Social media)">
+                <input type="text" id="track-work-on" placeholder="What to work on (e.g., Time management)">
+                <input type="text" id="track-avoid" placeholder="What to avoid (e.g., Overthinking)">
+                <textarea id="track-summary" placeholder="Summary of your day..."></textarea>
+                <button class="action-btn" onclick="addTracking()">Save</button>
+                <button class="action-btn" onclick="closeTrackModal()">Cancel</button>
+            </div>
+        </div>
+        <div class="track-modal" id="viewModal">
+            <div class="track-content">
+                <h2>Tracking Entry</h2>
+                <p id="view-mood"></p>
+                <p id="view-bad-habits"></p>
+                <p id="view-good-habits"></p>
+                <p id="view-works"></p>
+                <p id="view-focus"></p>
+                <p id="view-distractions"></p>
+                <p id="view-work-on"></p>
+                <p id="view-avoid"></p>
+                <p id="view-summary"></p>
+                <button class="action-btn" onclick="closeViewModal()">Close</button>
+            </div>
+        </div>
+        <div class="track-modal" id="analyzeModal">
+            <div class="track-content">
+                <h2>HINA's Analysis</h2>
+                <p id="analyze-response"></p>
+                <button class="action-btn" onclick="closeAnalyzeModal()">Close</button>
+            </div>
+        </div>
+        <canvas id="celebration"></canvas>
+    </div>
+</body>
+</html>

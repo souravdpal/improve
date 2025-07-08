@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk to AI Friend - AI Therapist</title>
+    <link rel="stylesheet" href="/css/tracker.css">
+    <link rel="stylesheet" href="/css/fai.css">
+    <script src="/js/fai.js" defer></script>
+</head>
+<body>
+    <div class="talk-container">
+        <header class="talk-header">
+            <a  class="nav-icon" onclick="io()">←</a>
+            <h1>Talk to AI Friend</h1>
+        </header>
+        <script>
+            function io (){
+                window.location.href=`/home/hi/${encodeURIComponent(localStorage.getItem('name'))}`
+            }
+        </script>
+        <div class="friend-selector">
+            <div class="friend-scroll" id="friend-scroll">
+                <!-- Friends will be appended here -->
+            </div>
+            <button class="action-btn" onclick="openFriendModal()">Make Friend</button>
+        </div>
+        <div class="chat-box" id="chat-box">
+            <!-- Chat messages will be appended here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chat-message" placeholder="Talk to your friend...">
+            <button class="action-btn" onclick="sendMessage()">Send</button>
+        </div>
+        <div class="talk-modal" id="friendModal">
+            <div class="talk-content">
+                <h2>Create New Friend</h2>
+                <input type="text" id="friend-name" placeholder="Name (e.g., HINA)">
+                <select id="friend-gender">
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other">Other</option>
+                </select>
+                <input type="text" id="friend-behavior" placeholder="Behavior (e.g., Empathetic, witty)">
+                <input type="text" id="friend-works" placeholder="Works (e.g., Therapist, coach)">
+                <button class="action-btn" onclick="saveFriend()">Save</button>
+                <button class="action-btn" onclick="closeFriendModal()">Cancel</button>
+            </div>
+        </div>
+        <div class="talk-modal" id="viewModal">
+            <div class="talk-content">
+                <h2>Friend Details</h2>
+                <p id="view-name"></p>
+                <p id="view-gender"></p>
+                <p id="view-behavior"></p>
+                <p id="view-works"></p>
+                <button class="action-btn" onclick="closeViewModal()">Close</button>
+            </div>
+        </div>
+        <canvas id="celebration"></canvas>
+    </div>
+</body>
+</html>

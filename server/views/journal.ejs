@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal - AI Therapist</title>
+    <link rel="stylesheet" href="/css/journal.css">
+    <script src="/js/journal.js" defer></script>
+</head>
+<body>
+    <div class="journal-container">
+        <header class="journal-header">
+            <a   class="nav-icon" onclick="gred()" >← </a>
+            <h1>Journal</h1>
+        </header><script>
+        function gred(){
+             clickSound.play().catch(() => console.log('Click sound failed'));
+            window.location.href=`/home/hi/${localStorage.getItem('name')}`
+        }
+    </script>
+        <button class="action-btn" onclick="openJournalModal()">Add Journal</button>
+        <div class="journal-cards" id="journal-cards">
+            <!-- Journal cards will be appended here -->
+        </div>
+        <div class="journal-modal" id="journalModal">
+            <div class="journal-content">
+                <h2>New Journal Entry</h2>
+                <textarea id="journal-text" placeholder="Write your journal or ask HINA..."></textarea>
+                <div id="reflective-questions" style="display: none;">
+                    <h3>Reflections</h3>
+                    <input type="text" id="q1" placeholder="What bad thing did you do today you wish could be reversed?">
+                    <input type="text" id="q2" placeholder="What did you improve today?">
+                    <input type="text" id="q3" placeholder="What are you proud of today?">
+                </div>
+                <button class="action-btn" onclick="askAI()">Ask HINA</button>
+                <button class="action-btn" onclick="saveJournal()">Save</button>
+                <button class="action-btn" onclick="closeJournalModal()">Cancel</button>
+            </div>
+        </div>
+        <div class="journal-modal" id="aiModal">
+            <div class="journal-content">
+                <h2>AI Journal Prompt</h2>
+                <textarea id="ai-summary" placeholder="Enter a summary or keywords for HINA..."></textarea>
+                <div id="ai-questions">
+                    <h3>Reflections</h3>
+                    <input type="text" id="ai-q1" placeholder="What bad thing did you do today you wish could be reversed?">
+                    <input type="text" id="ai-q2" placeholder="What did you improve today?">
+                    <input type="text" id="ai-q3" placeholder="What are you proud of today?">
+                </div>
+                <button class="action-btn" onclick="submitAIRequest()">Generate</button>
+                <button class="action-btn" onclick="closeAIModal()">Cancel</button>
+            </div>
+        </div>
+        <div class="journal-modal" id="viewModal">
+            <div class="journal-content">
+                <h2>Journal Entry</h2>
+                <p id="view-text"></p>
+                <h3>Reflections</h3>
+                <p id="view-q1"></p>
+                <p id="view-q2"></p>
+                <p id="view-q3"></p>
+                <button class="action-btn" onclick="closeViewModal()">Close</button>
+            </div>
+        </div>
+        <canvas id="celebration"></canvas>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>root</title>
+</head>
+
+<body>
+    checking!....
+
+
+
+    <script>
+        let username = localStorage.getItem('username');
+        if (username === undefined || username === null) {
+            console.log('redirecting tooo signup!')
+            window.location.href = "signup.html"
+        } else {
+            let user = localStorage.getItem('name')
+            window.location.href = `/home/hi/${encodeURIComponent(user)}`
+        }
+
+
+
+    </script>
+</body>
+
+</html>

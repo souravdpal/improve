@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Start Your Journey</title>
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Your Journey Begins Here</h2>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <form id="signupForm">
+            <div class="question active" data-index="0">
+                <label for="name">What's your full name?</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="question" data-index="1">
+                <label for="username">Choose a username</label>
+                <input type="text" id="username" name="username" placeholder="Your unique username" required>
+            </div>
+            <div class="question" data-index="2">
+                <label for="email">What's your email?</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="question" data-index="3">
+                <label for="age">How old are you? (Optional)</label>
+                <input type="number" id="age" name="age" placeholder="Enter your age" min="13" max="120">
+            </div>
+            <div class="question" data-index="4">
+                <label for="preferredName">What should we call you? (Optional)</label>
+                <input type="text" id="preferredName" name="preferredName" placeholder="Your nickname or preferred name">
+            </div>
+            <div class="question" data-index="5">
+                <label for="gender">What's your gender? (Optional)</label>
+                <select id="gender" name="gender">
+                    <option value="">Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Non-binary">Non-binary</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                </select>
+            </div>
+            <div class="question" data-index="6">
+                <label for="majors">What's your major or field of interest? (Optional)</label>
+                <select id="majors" name="majors">
+                    <option value="">Select your field</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Business">Business</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Science">Science</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="question" data-index="7">
+                <label for="hobbies">What are your hobbies? (Optional)</label>
+                <input type="text" id="hobbies" name="hobbies" placeholder="E.g., reading, gaming, hiking">
+            </div>
+            <div class="question" data-index="8">
+                <label for="habits">What habits are you currently working on? (Optional)</label>
+                <input type="text" id="habits" name="habits" placeholder="E.g., smoking, social media, procrastination">
+            </div>
+            <div class="question" data-index="9">
+                <label for="routine">Describe your daily routine briefly (Optional)</label>
+                <textarea id="routine" name="routine" placeholder="E.g., wake up at 7 AM, work, exercise in evening"></textarea>
+            </div>
+            <div class="question" data-index="10">
+                <label for="whyHere">Why are you joining us?</label>
+                <textarea id="whyHere" name="whyHere" placeholder="Tell us what brings you here" required></textarea>
+            </div>
+            <div class="question" data-index="11">
+                <label for="goalsChallenges">What are your goals and challenges?</label>
+                <textarea id="goalsChallenges" name="goalsChallenges" placeholder="Share your goals, what you want to improve, transformations you seek, and any addictions or problems you want to address" required></textarea>
+            </div>
+            <div class="question" data-index="12">
+                <label for="biggestChallenge">What's the biggest challenge in your life right now? (Optional)</label>
+                <input type="text" id="biggestChallenge" name="biggestChallenge" placeholder="E.g., staying motivated, managing time">
+            </div>
+            <div class="question" data-index="13">
+                <label for="motivation">How motivated are you to make a change? (1-10)</label>
+                <input type="number" id="motivation" name="motivation" min="1" max="10" placeholder="Enter a number from 1 to 10">
+            </div>
+            <div class="question" data-index="14">
+                <label for="supportMethod">How would you prefer to receive support? (Optional)</label>
+                <select id="supportMethod" name="supportMethod">
+                    <option value="">Select an option</option>
+                    <option value="Community">Community support</option>
+                    <option value="Self-guided">Self-guided tools</option>
+                    <option value="Professional">Professional guidance</option>
+                    <option value="Combination">Combination</option>
+                </select>
+            </div>
+            <div class="question" data-index="15">
+                <label for="password">Create a password</label>
+                <input type="password" id="password" name="password" placeholder="Choose a strong password" required>
+            </div>
+            <div class="question" data-index="16">
+                <label for="confirmPassword">Re-enter your password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+            <div class="button-group">
+                <button type="button" id="prevBtn" disabled>Previous</button>
+                <button type="button" id="nextBtn">Next</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const signupForm = document.getElementById('signupForm');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const questions = document.querySelectorAll('.question');
+        const progress = document.getElementById('progress');
+        let currentIndex = 0;
+        let data = {};
+
+        function updateQuestion() {
+            questions.forEach((q, index) => {
+                q.classList.toggle('active', index === currentIndex);
+            });
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.textContent = currentIndex === questions.length - 1 ? 'Submit' : 'Next';
+            progress.style.width = `${((currentIndex + 1) / questions.length) * 100}%`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const currentQuestion = questions[currentIndex];
+            const input = currentQuestion.querySelector('input, select, textarea');
+            if (input.hasAttribute('required') && !input.value) {
+                alert('Please fill out this required field.');
+                return;
+            }
+            if (currentIndex === questions.length - 1) {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match. Please try again.');
+                    return;
+                }
+                const formData = new FormData(signupForm);
+                data = {
+                    name: formData.get('name') || null,
+                    username: formData.get('username') || null,
+                    email: formData.get('email') || null,
+                    age: formData.get('age') || null,
+                    preferredName: formData.get('preferredName') || null,
+                    gender: formData.get('gender') || null,
+                    majors: formData.get('majors') || null,
+                    hobbies: formData.get('hobbies') || null,
+                    habits: formData.get('habits') || null,
+                    routine: formData.get('routine') || null,
+                    whyHere: formData.get('whyHere') || null,
+                    goalsChallenges: formData.get('goalsChallenges') || null,
+                    biggestChallenge: formData.get('biggestChallenge') || null,
+                    motivation: formData.get('motivation') || null,
+                    supportMethod: formData.get('supportMethod') || null,
+                    password: formData.get('password') || null
+                };
+                //console.log('Collected Data:', data);
+                //alert('Sign-up successful! Redirecting to home page...');
+                alert(data.username)
+                localStorage.setItem('username' , data.username)
+                localStorage.setItem('name' , data.name)
+                window.location.href = `/home/hi/${encodeURIComponent(data.name)}`;
+            } else {
+                currentIndex++;
+                updateQuestion();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateQuestion();
+            }
+        });
+
+        updateQuestion();
+    </script>
+    <script src="/js/signup.js"></script>
+</body>
+</html>

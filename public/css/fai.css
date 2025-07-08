@@ -1,0 +1,320 @@
+:root {
+    --primary-bg: linear-gradient(135deg, #ff6f61, #a3e4d7); /* Coral to mint for talk */
+    --card-bg: rgba(255, 255, 255, 0.25);
+    --text-color: #2e2e2e;
+    --accent-color: #ff8a65;
+    --button-bg: linear-gradient(45deg, #ff6f61, #f28c38);
+    --button-hover: linear-gradient(45deg, #e65b50, #d97b2a);
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    --border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark-mode {
+    --primary-bg: linear-gradient(135deg, #4b2e2e, #2e6b5f);
+    --card-bg: rgba(40, 40, 40, 0.35);
+    --text-color: #e6e6e6;
+    --accent-color: #ffb3a7;
+    --button-bg: linear-gradient(45deg, #ff6f61, #f28c38);
+    --button-hover: linear-gradient(45deg, #e65b50, #d97b2a);
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    --border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--primary-bg);
+    color: var(--text-color);
+    min-height: 100vh;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.talk-container {
+    max-width: 900px;
+    margin: 1rem auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.talk-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    border: var(--border);
+}
+
+.talk-header h1 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.nav-icon {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.nav-icon:hover {
+    transform: scale(1.2);
+    opacity: 0.9;
+}
+
+.friend-selector {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.friend-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) rgba(0, 0, 0, 0.1);
+}
+
+.friend-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.friend-scroll::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+.friend-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.friend-card {
+    background: var(--card-bg);
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: var(--border);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: slideIn 0.5s ease;
+    min-width: 100px;
+    text-align: center;
+}
+
+.friend-card.selected {
+    background: var(--accent-color);
+    color: white;
+}
+
+.friend-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.friend-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.chat-box {
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    border: var(--border);
+    padding: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chat-message {
+    max-width: 70%;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.chat-message.ai {
+    background: rgba(255, 255, 255, 0.3);
+    align-self: flex-start;
+}
+
+.chat-message.user {
+    background: var(--accent-color);
+    color: white;
+    align-self: flex-end;
+}
+
+.chat-message p {
+    margin: 0;
+}
+
+.chat-input {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+}
+
+.chat-input input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+.action-btn {
+    position: relative;
+    padding: 0.8rem 2rem;
+    background: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.action-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.action-btn:hover::before {
+    width: 200px;
+    height: 200px;
+}
+
+.action-btn:hover {
+    background: var(--button-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.talk-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.talk-modal.active {
+    display: flex;
+}
+
+.talk-content {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    border: var(--border);
+    max-width: 500px;
+    width: 90%;
+    animation: fadeIn 0.5s ease;
+}
+
+.talk-content h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.talk-content input, .talk-content select {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+}
+
+.talk-content input:focus, .talk-content select:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+.talk-content p {
+    margin: 0.5rem 0;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+#celebration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    pointer-events: none;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-10px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+    .talk-container {
+        margin: 0.5rem;
+    }
+
+    .friend-selector {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .chat-box {
+        max-height: 300px;
+    }
+}
+
