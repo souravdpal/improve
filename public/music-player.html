@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Player Iframe</title>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <div id="yt-player"></div>
+    <script>
+        let player = null;
+        let musicInterval = null;
+
+        // Initialize YouTube player
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                height: '0',
+                width: '0',
+                playerVars: {
+                    autoplay: 0,
+                    controls: 0,
+                    modestbranding: 1
+                },
+                events: {
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange,
+                    onError: onPlayerError
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            window.parent.postMessage({ type: 'playerReady' }, '*');
+        }
+
+        function onPlayerStateChange(event) {
+            const state = {
+                type: 'stateChange',
+                isPlaying: event.data === YT.PlayerState.PLAYING,
+                musicTime: player.getCurrentTime ? player.getCurrentTime() : 0,
+                music: event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.PAUSED ? player.getVideoData().video_id : null
+            };
+            window.parent.postMessage(state, '*');
+            if (event.data === YT.PlayerState.PLAYING) {
+                updateMusicProgress();
+            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                clearInterval(musicInterval);
+            }
+        }
+
+        function onPlayerError(event) {
+            window.parent.postMessage({ type: 'error', message: `YouTube Player Error: ${event.data}` }, '*');
+        }
+
+        function updateMusicProgress() {
+            clearInterval(musicInterval);
+            musicInterval = setInterval(() => {
+                if (player && player.getCurrentTime) {
+                    window.parent.postMessage({
+                        type: 'progress',
+                        musicTime: player.getCurrentTime(),
+                        duration: player.getDuration ? player.getDuration() : 3600
+                    }, '*');
+                }
+            }, 1000);
+        }
+
+        // Handle messages from parent
+        window.addEventListener('message', (event) => {
+            const data = event.data;
+            if (!data || !data.type) return;
+
+            switch (data.type) {
+                case 'play':
+                    if (player && data.videoId) {
+                        player.loadVideoById({ videoId: data.videoId, startSeconds: data.startTime || 0, suggestedQuality: 'small' });
+                        player.playVideo();
+                    }
+                    break;
+                case 'pause':
+                    if (player && typeof player.pauseVideo === 'function') {
+                        player.pauseVideo();
+                    }
+                    break;
+                case 'stop':
+                    if (player && typeof player.stopVideo === 'function') {
+                        player.stopVideo();
+                        clearInterval(musicInterval);
+                    }
+                    break;
+                case 'resume':
+                    if (player && data.videoId) {
+                        player.loadVideoById({ videoId: data.videoId, startSeconds: data.startTime || 0, suggestedQuality: 'small' });
+                        player.playVideo();
+                    }
+                    break;
+                case 'setVolume':
+                    if (player && typeof player.setVolume === 'function') {
+                        player.setVolume(data.volume || 50);
+                    }
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

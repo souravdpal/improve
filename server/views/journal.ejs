@@ -3,66 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journal - AI Therapist</title>
+    <title>Journal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/journal.css">
-    <script src="/js/journal.js" defer></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script  defer src="/js/music.js"></script>
+    <script></script>
+    <script defer src="/js/home.js"></script>
 </head>
 <body>
+    <div id="music-player"></div>
+    <!-- Home page only: Add controls -->
+    <div class="music-controls" style="display: none;">
+        <select id="ambientSound"></select>
+        <progress id="music-progress" value="0" max="100"></progress>
+        <input type="range" id="music-volume" min="0" max="100" value="50">
+        <button class="action-btn" onclick="playMusic()">Play</button>
+        <button class="action-btn" onclick="pauseMusic()">Pause</button>
+        <button class="action-btn" onclick="stopMusic()">Stop</button>
+        <button class="action-btn" onclick="resumeMusic()">Resume</button>
+        <input type="text" id="newMusicLink" placeholder="YouTube URL">
+        <button class="action-btn" onclick="addCustomMusic()">Add Music</button>
+    </div>
+
     <div class="journal-container">
-        <header class="journal-header">
-            <a   class="nav-icon" onclick="gred()" >← </a>
-            <h1>Journal</h1>
-        </header><script>
-        function gred(){
-             clickSound.play().catch(() => console.log('Click sound failed'));
-            window.location.href=`/home/hi/${localStorage.getItem('name')}`
-        }
-    </script>
-        <button class="action-btn" onclick="openJournalModal()">Add Journal</button>
-        <div class="journal-cards" id="journal-cards">
-            <!-- Journal cards will be appended here -->
+        <div class="journal-header">
+
+            <a onclick="goBack1()" class="nav-icon"><i class="fas fa-arrow-left"></i></a>
+            <script>
+               // let uname = localStorage.getItem('username');
+                let goBack1 = () => {
+                    window.history.back();
+                };
+            </script>
+            <h1>My Journal</h1>
+            <button id="themeToggle" class="theme-toggle">🌙</button>
         </div>
-        <div class="journal-modal" id="journalModal">
+
+        <div class="button-group">
+            <button id="openJournalBtn" class="action-btn">New Entry</button>
+            <button id="deleteAllBtn" class="action-btn delete-all-btn" onclick="confirmDeleteAll()">Clear All</button>
+        </div>
+
+        <div id="journal-cards" class="journal-cards"></div>
+
+        <div id="journalModal" class="journal-modal">
             <div class="journal-content">
-                <h2>New Journal Entry</h2>
-                <textarea id="journal-text" placeholder="Write your journal or ask HINA..."></textarea>
+                <h2>Create New Entry</h2>
+                <textarea id="journal-text" placeholder="Write your thoughts here..." rows="8"></textarea>
                 <div id="reflective-questions" style="display: none;">
                     <h3>Reflections</h3>
-                    <input type="text" id="q1" placeholder="What bad thing did you do today you wish could be reversed?">
-                    <input type="text" id="q2" placeholder="What did you improve today?">
-                    <input type="text" id="q3" placeholder="What are you proud of today?">
+                    <input id="q1" type="text" placeholder="What regret do you have today?">
+                    <input id="q2" type="text" placeholder="What progress did you make?">
+                    <input id="q3" type="text" placeholder="What are you proud of?">
                 </div>
-                <button class="action-btn" onclick="askAI()">Ask HINA</button>
-                <button class="action-btn" onclick="saveJournal()">Save</button>
-                <button class="action-btn" onclick="closeJournalModal()">Cancel</button>
+                <div class="modal-actions">
+                    <button id="askAI" class="action-btn">Ask HINA</button>
+                    <button id="saveJournal" class="action-btn">Save Entry</button>
+                    <button id="closeJournal" class="action-btn cancel-btn">Cancel</button>
+                </div>
             </div>
         </div>
-        <div class="journal-modal" id="aiModal">
+
+        <div id="aiModal" class="journal-modal">
             <div class="journal-content">
                 <h2>AI Journal Prompt</h2>
-                <textarea id="ai-summary" placeholder="Enter a summary or keywords for HINA..."></textarea>
-                <div id="ai-questions">
-                    <h3>Reflections</h3>
-                    <input type="text" id="ai-q1" placeholder="What bad thing did you do today you wish could be reversed?">
-                    <input type="text" id="ai-q2" placeholder="What did you improve today?">
-                    <input type="text" id="ai-q3" placeholder="What are you proud of today?">
+                <textarea id="ai-summary" placeholder="Summarize your day or thoughts for HINA..." rows="4"></textarea>
+                <h3>Reflective Prompts (Optional)</h3>
+                <input id="ai-q1" type="text" placeholder="What regret do you have today?">
+                <input id="ai-q2" type="text" placeholder="What progress did you make?">
+                <input id="ai-q3" type="text" placeholder="What are you proud of?">
+                <div class="modal-actions">
+                    <button id="submitAI" class="action-btn">Generate</button>
+                    <button id="closeAI" class="action-btn cancel-btn">Cancel</button>
                 </div>
-                <button class="action-btn" onclick="submitAIRequest()">Generate</button>
-                <button class="action-btn" onclick="closeAIModal()">Cancel</button>
             </div>
         </div>
-        <div class="journal-modal" id="viewModal">
-            <div class="journal-content">
+
+        <div id="viewModal" class="journal-modal">
+            <div class="journal-content view-content">
                 <h2>Journal Entry</h2>
-                <p id="view-text"></p>
-                <h3>Reflections</h3>
-                <p id="view-q1"></p>
-                <p id="view-q2"></p>
-                <p id="view-q3"></p>
-                <button class="action-btn" onclick="closeViewModal()">Close</button>
+                <div class="journal-text-box" id="view-text"></div>
+                <div id="view-reflections" class="reflections">
+                    <p id="view-q1"></p>
+                    <p id="view-q2"></p>
+                    <p id="view-q3"></p>
+                </div>
+                <div class="modal-actions">
+                    <button id="closeView" class="action-btn">Close</button>
+                </div>
             </div>
         </div>
+
+        <div id="confirmDeleteAllModal" class="journal-modal">
+            <div class="journal-content">
+                <h2>Confirm Delete All</h2>
+                <p>Are you sure you want to delete all journals? This action cannot be undone.</p>
+                <input id="confirmUsername" type="text" placeholder="Enter your username to confirm">
+                <div class="modal-actions">
+                    <button id="confirmDeleteAll" class="action-btn delete-all-btn" onclick="deleteAllJournals()">Confirm</button>
+                    <button id="closeConfirmDeleteAll" class="action-btn cancel-btn" onclick="closeConfirmDeleteAllModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+
         <canvas id="celebration"></canvas>
     </div>
+    <script src="/js/journal.js"></script>
 </body>
 </html>

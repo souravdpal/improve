@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/css/tracker.css">
     <link rel="stylesheet" href="/css/fai.css">
     <script src="/js/fai.js" defer></script>
+    <script defer src="/js/music.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
     <div class="talk-container">
@@ -16,7 +18,7 @@
         </header>
         <script>
             function io (){
-                window.location.href=`/home/hi/${encodeURIComponent(localStorage.getItem('name'))}`
+                window.history.back();
             }
         </script>
         <div class="friend-selector">

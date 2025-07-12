@@ -1,0 +1,342 @@
+{
+  "user": {
+    "name": "sourav",
+    "streak": 2,
+    "currentMood": "neutral",
+    "goal": "Overcome procrastination and build discipline",
+    "streakHistory": [
+      1,
+      1,
+      2
+    ],
+    "avatar": "data:image/png;base64,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",
+    "playlist": [
+      {
+        "tag": "rain",
+        "url": "https://www.youtube.com/watch?v=yIQd2Ya0Ziw"
+      },
+      {
+        "tag": "thunderrain",
+        "url": "https://www.youtube.com/watch?v=qlLkTmoKjOY"
+      },
+      {
+        "tag": "forest",
+        "url": "https://www.youtube.com/watch?v=IvjMgVS6kng"
+      },
+      {
+        "tag": "salvatore",
+        "url": "https://www.youtube.com/watch?v=GVQON-muEFc"
+      },
+      {
+        "tag": "cry",
+        "url": "https://www.youtube.com/watch?v=BfU1iB7UBH0"
+      },
+      {
+        "tag": "rest_time",
+        "url": "https://www.youtube.com/watch?v=EyyfRW3WC5c"
+      },
+      {
+        "tag": "young_and_beautiful",
+        "url": "https://www.youtube.com/watch?v=Te11UaHOHMQ"
+      },
+      {
+        "tag": "lucid_dreams",
+        "url": "https://www.youtube.com/watch?v=5ftaYP9DdYs"
+      },
+      {
+        "tag": "all_girls_are_the_sae",
+        "url": "https://www.youtube.com/watch?v=h2H5hgpRm-Q"
+      },
+      {
+        "tag": "wasted",
+        "url": "https://www.youtube.com/watch?v=AEc76IWlC_g"
+      },
+      {
+        "tag": "wasted2",
+        "url": "https://www.youtube.com/watch?v=AEc76IWlC_g"
+      },
+      {
+        "tag": "pika_boo",
+        "url": "https://www.youtube.com/watch?v=KpxxW86Hbvc"
+      },
+      {
+        "tag": "flirting",
+        "url": "https://www.youtube.com/watch?v=wLLbjgocLNM"
+      },
+      {
+        "tag": "death_bed",
+        "url": "https://www.youtube.com/watch?v=JApegyYlvyY"
+      },
+      {
+        "tag": "loosing_intrest",
+        "url": "https://www.youtube.com/watch?v=GkEko5zRdqQ"
+      }
+    ]
+  },
+  "tasks": [],
+  "pomodoro": {
+    "tasks": [
+      {
+        "name": "Work on project",
+        "duration": 25,
+        "break": 5,
+        "completed": false,
+        "timeSpent": 0,
+        "isActive": false,
+        "timestamp": "2025-07-11T07:39:21.175Z"
+      },
+      {
+        "name": "Study chapter 3",
+        "duration": 25,
+        "break": 5,
+        "completed": false,
+        "timeSpent": 0,
+        "isActive": false,
+        "timestamp": "2025-07-11T07:39:21.175Z"
+      },
+      {
+        "name": "Maths lecture ",
+        "duration": 60,
+        "break": 5,
+        "completed": true,
+        "timestamp": "2025-07-11T07:46:46.028Z",
+        "timeSpent": 3,
+        "isActive": false
+      },
+      {
+        "name": "chem",
+        "duration": 80,
+        "break": 5,
+        "completed": true,
+        "timestamp": "2025-07-11T14:02:47.033Z",
+        "timeSpent": 437,
+        "isActive": true
+      }
+    ],
+    "history": [
+      {
+        "name": "chem",
+        "duration": 80,
+        "completedAt": "2025-07-11T15:26:25.882Z"
+      },
+      {
+        "name": "Maths lecture ",
+        "duration": 60,
+        "completedAt": "2025-07-11T15:26:41.449Z"
+      }
+    ],
+    "settings": {
+      "workDuration": 80,
+      "breakDuration": 5
+    }
+  },
+  "moods": [
+    {
+      "mood": "stressed",
+      "timestamp": "2025-07-11T07:41:53.919Z",
+      "id": "mood-1752219713919"
+    },
+    {
+      "mood": "stressed",
+      "timestamp": "2025-07-11T07:41:54.067Z",
+      "id": "mood-1752219714067"
+    },
+    {
+      "mood": "stressed",
+      "timestamp": "2025-07-11T07:41:54.200Z",
+      "id": "mood-1752219714200"
+    },
+    {
+      "mood": "stressed",
+      "timestamp": "2025-07-11T07:41:54.291Z",
+      "id": "mood-1752219714291"
+    },
+    {
+      "mood": "stressed",
+      "timestamp": "2025-07-11T07:41:54.471Z",
+      "id": "mood-1752219714471"
+    },
+    {
+      "mood": "neutral",
+      "timestamp": "2025-07-11T07:42:03.549Z",
+      "id": "mood-1752219723549"
+    },
+    {
+      "mood": "neutral",
+      "timestamp": "2025-07-11T07:42:03.753Z",
+      "id": "mood-1752219723753"
+    },
+    {
+      "mood": "neutral",
+      "timestamp": "2025-07-11T07:42:03.933Z",
+      "id": "mood-1752219723933"
+    },
+    {
+      "mood": "neutral",
+      "timestamp": "2025-07-11T07:48:01.712Z",
+      "id": "mood-1752220081712"
+    },
+    {
+      "mood": "neutral",
+      "timestamp": "2025-07-11T15:27:07.142Z",
+      "id": "mood-1752247627142"
+    }
+  ],
+  "distractions": [
+    {
+      "trigger": "Phone",
+      "timestamp": "2025-07-11T07:48:13.802Z",
+      "id": "distraction-1752220093802"
+    }
+  ],
+  "actions": [
+    {
+      "action": "navigate_journal",
+      "timestamp": "2025-07-11T19:14:42.428Z",
+      "id": "action-1752261282428"
+    },
+    {
+      "action": "daily_reminder_morning",
+      "timestamp": "2025-07-11T19:18:21.382Z",
+      "id": "action-1752261501382"
+    },
+    {
+      "action": "daily_reminder_morning",
+      "timestamp": "2025-07-11T19:19:19.356Z",
+      "id": "action-1752261559356"
+    },
+    {
+      "action": "daily_reminder_morning",
+      "timestamp": "2025-07-11T19:19:53.888Z",
+      "id": "action-1752261593888"
+    },
+    {
+      "action": "daily_reminder_morning",
+      "timestamp": "2025-07-11T19:20:02.625Z",
+      "id": "action-1752261602625"
+    },
+    {
+      "action": "navigate_mood",
+      "timestamp": "2025-07-11T19:20:53.067Z",
+      "id": "action-1752261653067"
+    },
+    {
+      "action": "navigate_mood",
+      "timestamp": "2025-07-11T19:23:02.492Z",
+      "id": "action-1752261782492"
+    },
+    {
+      "action": "navigate_journal",
+      "timestamp": "2025-07-11T19:23:06.918Z",
+      "id": "action-1752261786918"
+    },
+    {
+      "action": "daily_reminder_morning",
+      "timestamp": "2025-07-11T19:26:43.970Z",
+      "id": "action-1752262003970"
+    },
+    {
+      "action": "navigate_tasks",
+      "timestamp": "2025-07-11T19:26:54.221Z",
+      "id": "action-1752262014221"
+    }
+  ],
+  "habits": [
+    {
+      "name": "Meditation",
+      "progress": "4/7",
+      "goal": 7
+    },
+    {
+      "name": "Waking up early",
+      "progress": "6/7",
+      "goal": 7
+    }
+  ],
+  "gratitude": [],
+  "reflections": [],
+  "milestones": [
+    {
+      "text": "Reached 3-day streak!",
+      "timestamp": "2025-07-11T07:39:21.175Z"
+    }
+  ],
+  "tips": [
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-11T19:21:44.360Z",
+      "id": "tip-1752261704360"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-11T19:21:44.502Z",
+      "id": "tip-1752261704502"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-11T19:21:44.651Z",
+      "id": "tip-1752261704651"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-11T19:21:44.781Z",
+      "id": "tip-1752261704781"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-11T19:21:44.914Z",
+      "id": "tip-1752261704914"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-11T19:21:45.077Z",
+      "id": "tip-1752261705077"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-11T19:21:45.424Z",
+      "id": "tip-1752261705424"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-11T19:22:22.431Z",
+      "id": "tip-1752261742431"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-11T19:26:43.971Z",
+      "id": "tip-1752262003971"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-11T19:27:03.241Z",
+      "id": "tip-1752262023241"
+    }
+  ],
+  "settings": {
+    "darkMode": true,
+    "notifications": "off",
+    "music": "loosing_intrest",
+    "musicTime": 71.18454305340576
+  },
+  "journal": [
+    {
+      "text": "I'm feeling pretty meh today, I guess I'm neutral. I had a tough day - I woke up thinking I'd be in control and not give in to my bad habits, but when I was alone at home, I messed up and opened those role-play apps and did something I regret, it made me feel guilty and I'm really struggling with this addiction. I'm trying to improve myself, especially with coding and cybersecurity, which I love, but today I didn't do much of that, instead I wasted time. I'm proud that I did start studying later in the day and did as much as I could, which is a small win. I'm really looking forward to tomorrow and trying to do better with my time management and self-control, maybe I can even get back into meditation and make it a daily habit.",
+      "answers": {
+        "q1": "mastubtion and looseing self control",
+        "q2": "after i start study and do as much i can",
+        "q3": "Nothing"
+      },
+      "timestamp": "2025-07-11T08:34:36.488Z"
+    },
+    {
+      "text": "I'm feeling pretty meh today, I guess I had a bit of a weird day - I was supposed to study for my 12th class but I got distracted and started coding instead, and before I knew it, 8 pm to 1 am had passed and I hadn't studied at all, which made me really scared that I'm wasting my time. I regret wasting so much time on coding, but on the other hand, I'm kinda proud that I was able to get in a flow state and make some progress on my site, even if it wasn't much. I've been trying to build better habits like meditation and waking up early, and I'm happy to say I've been doing pretty well on those fronts - I've meditated 4 times this week and woken up early 6 times. I'm still struggling with time management, but I'm hoping that tomorrow will be a better day and I'll be able to stay focused on my goals, especially since I've reached a 2-day streak and I'm excited to see how far I can take it. I'm really looking forward to getting back on track and making the most of my time, maybe I can even learn something new about astrophysics or quantum machines.",
+      "answers": {
+        "q1": "wasting time on coding",
+        "q2": "make my site more btter but nothing",
+        "q3": "nothing"
+      },
+      "timestamp": "2025-07-11T19:25:18.849Z"
+    }
+  ]
+}

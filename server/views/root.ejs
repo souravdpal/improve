@@ -5,26 +5,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>root</title>
+    <script defer src="/js/music.js"></script>\
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 
 <body>
-    checking!....
-
-
+    <div id="loader-container">
+        <div class="loader"></div>
+        <h2 id="loading-text">Customizing site for your preferences...</h2>
+        <p id="timer"></p>
+    </div>
 
     <script>
-        let username = localStorage.getItem('username');
-        if (username === undefined || username === null) {
-            console.log('redirecting tooo signup!')
-            window.location.href = "signup.html"
-        } else {
-            let user = localStorage.getItem('name')
-            window.location.href = `/home/hi/${encodeURIComponent(user)}`
-        }
+        // Timer logic
+        let seconds = Math.floor(Math.random() * 7) + 1;
+        const timerElem = document.getElementById('timer');
+        timerElem.textContent = `Please wait ${seconds} seconds...`;
 
-
-
+        const interval = setInterval(() => {
+            seconds--;
+            timerElem.textContent = `Please wait ${seconds} seconds...`;
+            if (seconds <= 0) {
+                clearInterval(interval);
+                let username = localStorage.getItem('username');
+                if (!username) {
+                    window.location.href = "signup.html";
+                } else {
+                    let user = localStorage.getItem('name');
+                    window.location.href = `/home/hi/${encodeURIComponent(user)}`;
+                }
+            }
+        }, 1000);
     </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        #loader-container {
+            text-align: center;
+            background: rgba(255,255,255,0.15);
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #6e8efb;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        #loading-text {
+            font-size: 1.5em;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        #timer {
+            font-size: 1.1em;
+            color: #f3f3f3;
+        }
+    </style>
 </body>
 
 </html>

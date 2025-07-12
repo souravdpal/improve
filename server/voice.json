@@ -60,7 +60,11 @@
         "url": "https://www.youtube.com/embed/sF80I-TQiW0?autoplay=1&loop=1&playlist=sF80I-TQiW0"
     },
     {
-        "tag" : "lucid dreams",
-        "url" : "https://www.youtube.com/embed/ff90ZV3OEsg?autoplay=1&loop=1&playlist="
+        "tag": "lucid dreams",
+        "url": "https://www.youtube.com/embed/ff90ZV3OEsg?autoplay=1&loop=1&playlist="
+    },
+    {
+        "tag": "lucid dreams-og",
+        "url": "https://www.youtube.com/embed/NNjA5cuc-Wc?autoplay=1&loop=1&playlist=NNjA5cuc-Wc"
     }
 ]

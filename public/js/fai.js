@@ -50,8 +50,8 @@ let homdata = {
 };
 
 // Audio for click and completion sounds
-const clickSound = new Audio('/sounds/click.mp3');
-const completeSound = new Audio('/sounds/fun.mp3');
+const clickSound = new Audio('/sounds/click');
+const completeSound = new Audio('/sounds/fun');
 
 function playClickSound() {
     clickSound.play().catch(() => console.log('Click sound failed'));

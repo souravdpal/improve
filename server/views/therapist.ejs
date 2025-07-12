@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HINA - AI Therapist</title>
     <link rel="stylesheet" href="/css/ai.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="/js/ai.js" defer></script>
+    <script defer src="/js/music.js"></script>
 </head>
-
 <body>
     <div class="chat-container">
         <header class="chat-header">
-            <script>
-                let red = () => {
-                    window.location.href = `/home/hi/${encodeURIComponent(localStorage.getItem('name'))}`
-                }
-
-            </script>
-            <a onclick="red()" class="nav-icon" onclick="playClickSound()"><i class="fa-solid fa-arrow-left"></i>
+            <a href="javascript:history.back()" class="nav-icon" onclick="playClickSound()">
+                <i class="fa-solid fa-arrow-left"></i>
             </a>
             <h1 class="logo">HINA</h1>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
         </header>
         <div class="chat-messages" id="chat-messages">
             <!-- Messages will be appended here -->
         </div>
         <div class="chat-input">
             <input type="text" id="message-input" placeholder="Talk to HINA..." />
-            <button class="mic-btn" onclick="toggleMic()"><i class="fa-solid fa-microphone"></i>
+            <button class="mic-btn" onclick="toggleMic()">
+                <i class="fa-solid fa-microphone"></i>
             </button>
-            <button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            <button class="send-btn" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
         </div>
         <canvas id="celebration"></canvas>
     </div>
 </body>
-
 </html>
