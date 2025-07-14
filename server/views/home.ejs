@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,6 +45,7 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="container">
         <!-- Welcome Card -->
@@ -55,6 +57,10 @@
                     <button class="emoji-button" data-mood="neutral">😐</button>
                     <button class="emoji-button" data-mood="sad">😔</button>
                     <button class="emoji-button" data-mood="stressed">😓</button>
+                    <button class="emoji-button" data-mood="excited">🤩</button>
+                    <button class="emoji-button" data-mood="angry">😠</button>
+                    <button class="emoji-button" data-mood="tired">😴</button>
+
                 </div>
                 <p id="affirmation" class="affirmation"></p>
             </div>
@@ -64,8 +70,11 @@
         <section class="quick-actions">
             <button class="action-btn" data-feature="journal"><i class="fas fa-book"></i> Journal</button>
             <button class="action-btn" data-feature="tracker"><i class="fas fa-chart-line"></i> Tracker</button>
-            <button class="action-btn" data-feature="therapist"><i class="fas fa-comment-dots"></i> Talk to Therapist</button>
-            <button class="action-btn" data-feature="leaderboard"><i class="fas fa-trophy"></i> Leaderboard</button>
+            <button class="action-btn" data-feature="therapist"><i class="fas fa-comment-dots"></i> Talk to
+                Therapist</button>
+            <button
+                onclick="window.location.href='/home/leaderboard/lead/prams?username=default&page=1&limit=10&users=true'"
+                class="action-btn" data-feature="leaderboard"><i class="fas fa-trophy"></i> Leaderboard</button>
         </section>
 
         <!-- Your Day Section -->
@@ -73,7 +82,12 @@
             <h2 class="section-heading">Your Day</h2>
             <div class="card-grid">
                 <div class="card pomodoro-card" data-feature="pomodoro">
-                    <h3><i class="fas fa-clock"></i> Pomodoro Timer</h3>
+                    <h3><i class="fas fa-clock"></i> Pomodoro Timer
+                        <button class="broom-btn" onclick="confirmClean('pomodoro')" aria-label="Clear All"
+                            title="Clear All"><i class="fas fa-broom"></i></button>
+
+
+                    </h3>
                     <div class="pomodoro-search">
                         <input id="pomodoro-search" placeholder="Search tasks..." oninput="searchPomodoro()">
                     </div>
@@ -87,9 +101,45 @@
                         <option value="Social Media">Social Media</option>
                         <option value="Phone">Phone</option>
                         <option value="Other">Other</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Phone">Phone</option>
+                        <option value="Other">Other</option>
+                        <option value="Friend or Family">Friend or Family</option>
+                        <option value="Google Search">Google Search</option>
+                        <option value="Advertisement">Advertisement</option>
+                        <option value="Email">Email</option>
+                        <option value="WhatsApp">WhatsApp</option>
+                        <option value="Telegram">Telegram</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="YouTube">YouTube</option>
+                        <option value="Twitter/X">Twitter/X</option>
+                        <option value="LinkedIn">LinkedIn</option>
+                        <option value="Reddit">Reddit</option>
+                        <option value="Snapchat">Snapchat</option>
+                        <option value="Posters or Banners">Posters or Banners</option>
+                        <option value="Newspaper">Newspaper</option>
+                        <option value="TV/Radio">TV/Radio</option>
+                        <option value="Blog or Website">Blog or Website</option>
+                        <option value="Event or Webinar">Event or Webinar</option>
+                        <option value="Referral Program">Referral Program</option>
+                        <option value="In-store Promotion">In-store Promotion</option>
+                        <option value="Influencer">Influencer</option>
+                        <option value="SMS">SMS</option>
+                        <option value="Cold Call">Cold Call</option>
+                        <option value="Flyer/Leaflet">Flyer/Leaflet</option>
+                        <option value="Podcast">Podcast</option>
+                        <option value="Forum or Online Community">Forum or Online Community</option>
+                        <option value="Word of Mouth">Word of Mouth</option>
+                        <option value="Affiliate Link">Affiliate Link</option>
+                        <option value="Quora">Quora</option>
+                        <option value="Pinterest">Pinterest</option>
+
                     </select>
                     <p id="trigger-log"><i class="fas fa-exclamation-circle"></i> Recent triggers: None</p>
-                    <div class="progress-bar"><div></div></div>
+                    <div class="progress-bar">
+                        <div></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -98,6 +148,8 @@
         <section class="dashboard-section">
             <h2 class="section-heading">Your Growth</h2>
             <div class="card-grid">
+
+                <!-- Profile -->
                 <div class="card profile-snapshot">
                     <h3><i class="fas fa-user"></i> Your Profile</h3>
                     <div class="profile-details">
@@ -110,32 +162,66 @@
                     <p id="user-goal"></p>
                     <button class="action-btn small-btn" onclick="editGoal()">Edit Goal</button>
                 </div>
+
+                <!-- Habits -->
                 <div class="card habit-list-card">
-                    <h3><i class="fas fa-check-circle"></i> Habits</h3>
+                    <h3>
+                        <i class="fas fa-check-circle"></i> Habits
+                        <button class="broom-btn" onclick="confirmClean('habits')" aria-label="Clear All"
+                            title="Clear All"><i class="fas fa-broom"></i></button>
+                    </h3>
                     <div class="habit-search">
                         <input id="habit-search" placeholder="Search habits..." oninput="searchHabits()">
                     </div>
-                    <div id="habit-list" class="habit-list"></div>
+                    <div class="card-scrollable">
+                        <div id="habit-list" class="habit-list"></div>
+                    </div>
                     <button class="action-btn small-btn" onclick="toggleModal('habitModal', true)">Add Habit</button>
                 </div>
+
+                <!-- Gratitude -->
                 <div class="card gratitude-log">
-                    <h3><i class="fas fa-heart"></i> Gratitude Journal</h3>
+                    <h3>
+                        <i class="fas fa-heart"></i> Gratitude Journal
+                        <button class="broom-btn" onclick="cleangratitude()" aria-label="Clear All" title="Clear All"><i
+                                class="fas fa-broom"></i></button>
+                    </h3>
                     <label for="gratitude">What are you grateful for?</label>
                     <textarea id="gratitude" placeholder="Enter your gratitude..."></textarea>
-                    <div id="gratitude-list" class="gratitude-list"></div>
+                    <div class="card-scrollable">
+                        <div id="gratitude-list" class="gratitude-list"></div>
+                    </div>
                 </div>
+
+                <!-- Mood Reflection -->
                 <div class="card mood-reflection">
-                    <h3><i class="fas fa-comment"></i> Mood Reflection</h3>
+                    <h3>
+                        <i class="fas fa-comment"></i> Mood Reflection
+                        <button class="broom-btn" onclick="confirmClean('mood')" aria-label="Clear All"
+                            title="Clear All"><i class="fas fa-broom"></i></button>
+                    </h3>
                     <label for="mood-reflection">Reflect on your day</label>
                     <textarea id="mood-reflection" placeholder="How do you feel today?"></textarea>
-                    <div id="reflection-list" class="reflection-list"></div>
+                    <div class="card-scrollable">
+                        <div id="reflection-list" class="reflection-list"></div>
+                    </div>
                 </div>
+
+                <!-- Milestones -->
                 <div class="card milestones">
-                    <h3><i class="fas fa-star"></i> Milestones</h3>
-                    <div id="milestone-list" class="milestones"></div>
+                    <h3><i class="fas fa-star"></i> Milestones
+                        <button class="broom-btn" onclick="confirmClean('milestones')" aria-label="Clear All"
+                            title="Clear All"><i class="fas fa-broom"></i></button>
+
+                    </h3>
+                    <div class="card-scrollable">
+                        <div id="milestone-list" class="milestones"></div>
+                    </div>
                 </div>
+
             </div>
         </section>
+
 
         <!-- Ambient Playlist -->
         <section class="dashboard-section">
@@ -166,19 +252,7 @@
     <!-- Floating Tip Button -->
     <button class="floating-btn" onclick="generateTip()"><i class="fas fa-lightbulb"></i></button>
 
-    <!-- Modals -->
-    <div id="pomodoroModal" class="modal">
-        <div class="modal-content">
-            <h3>Add Pomodoro Task</h3>
-            <input id="newPomodoroTask" placeholder="Task name">
-            <input id="pomodoroWorkDuration" type="number" placeholder="Work duration (min)" value="25">
-            <input id="pomodoroBreakDuration" type="number" placeholder="Break duration (min)" value="5">
-            <div class="modal-actions">
-                <button class="action-btn modal-btn" onclick="addPomodoroTask()">Add</button>
-                <button class="action-btn modal-btn close-btn" onclick="toggleModal('pomodoroModal', false)">Close</button>
-            </div>
-        </div>
-    </div>
+
     <div id="habitModal" class="modal">
         <div class="modal-content">
             <h3>Add Habit</h3>
@@ -196,7 +270,8 @@
             <input id="newMusicLink" placeholder="YouTube link">
             <div class="modal-actions">
                 <button class="action-btn modal-btn" onclick="addCustomMusic()">Add</button>
-                <button class="action-btn modal-btn close-btn" onclick="toggleModal('addMusicModal', false)">Close</button>
+                <button class="action-btn modal-btn close-btn"
+                    onclick="toggleModal('addMusicModal', false)">Close</button>
             </div>
         </div>
     </div>
@@ -212,7 +287,8 @@
         <div class="modal-content">
             <h3>Mindfulness</h3>
             <p id="meditation-text"></p>
-            <button class="action-btn modal-btn close-btn" onclick="toggleModal('mindfulnessModal', false)">Close</button>
+            <button class="action-btn modal-btn close-btn"
+                onclick="toggleModal('mindfulnessModal', false)">Close</button>
         </div>
     </div>
     <div id="settingsPopup" class="modal">
@@ -231,7 +307,8 @@
             </div>
             <div class="modal-actions">
                 <button class="action-btn modal-btn" onclick="exportData()">Export Data</button>
-                <button class="action-btn modal-btn close-btn" onclick="toggleModal('settingsPopup', false)">Close</button>
+                <button class="action-btn modal-btn close-btn"
+                    onclick="toggleModal('settingsPopup', false)">Close</button>
             </div>
         </div>
     </div>
@@ -239,7 +316,8 @@
         <div class="modal-content">
             <h3 id="genericMessageTitle"></h3>
             <p id="genericMessageText" class="mb-4"></p>
-            <input type="text" id="genericMessageInput" class="w-full p-3 mb-4 border border-gray-300 rounded-xl text-base bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-textDark focus:outline-none focus:ring-2 focus:ring-secondaryAccent shadow-inner hidden">
+            <input type="text" id="genericMessageInput"
+                class="w-full p-3 mb-4 border border-gray-300 rounded-xl text-base bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-textDark focus:outline-none focus:ring-2 focus:ring-secondaryAccent shadow-inner hidden">
             <div class="modal-actions">
                 <button class="action-btn modal-btn" id="genericMessageConfirmBtn">OK</button>
                 <button class="action-btn modal-btn close-btn" id="genericMessageCancelBtn">Cancel</button>
@@ -255,9 +333,40 @@
         <i class="nav-icon fa-solid fa-comment-dots" data-tooltip="Therapist" data-feature="therapist"></i>
         <i class="nav-icon fa-solid fa-gear" data-tooltip="Settings" onclick="toggleModal('settingsPopup', true)"></i>
     </nav>
+    <script>
+        async function confirmClean(type) {
+            const confirmed = confirm("⚠️ Are you sure you want to delete all " + type + " data?");
+            if (!confirmed) return;
+
+            try {
+                const response = await fetch('/home/clean', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        type: type,
+                        username: localStorage.getItem('username') // 🔥 fix: should be "username", not "user"
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                console.log("✅ Data cleaned successfully for type:", type);
+                alert(`✅ ${type} data cleared successfully!`);
+
+            } catch (err) {
+                console.error("❌ Error cleaning data:", err);
+                alert("❌ Error cleaning " + type);
+            }
+        }
+    </script>
 
     <canvas id="celebration"></canvas>
     <div id="music-player"></div>
     <script src="/js/home.js"></script>
 </body>
+
 </html>

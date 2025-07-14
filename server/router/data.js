@@ -174,36 +174,91 @@ router.delete('/data/journal', (req, res) => {
         res.status(500).json({ msg: `error: ${err.message}` });
     }
 });
+const defaultUserDataClean = {
+    user: {},
+    tasks: [],
+    pomodoro: {},
+    moods: [],
+    distractions: [],
+    actions: [],
+    habits: [],
+    gratitude: [],
+    reflections: [],
+    milestones: [],
+    tips: [],
+    settings: {
+        darkMode: false,
+        notifications: "off",
+        music: "none"
+    },
+    journal: []
+};
 
-// Delete all journal entries
-router.delete('/data/journal/all', (req, res) => {
-    let { username } = req.body;
-    console.log('Deleting all journals for username:', username);
+router.post('/clean', (req, res) => {
+    let { type, username } = req.body;
+    console.log('Received clean request for username:', username, 'type:', type);
+
+    if (!username) {
+        return res.status(400).json({ msg: 'Username is required' });
+    }
+
+    const filedir = path.join(userDataDir, `${username}-goals.json`);
 
     try {
-        if (!username) {
-            return res.status(400).json({ msg: 'Username is required' });
-        }
-
-        const filedir = path.join(userDataDir, `${username}-goals.json`);
-
         if (!fs.existsSync(filedir)) {
             return res.status(404).json({ msg: 'User data not found' });
         }
 
-        const BINfile = fs.readFileSync(filedir, 'utf-8');
-        let userData = JSON.parse(BINfile);
+        if (type === "removeuser") {
+            fs.unlinkSync(filedir);
+            console.log(`User data for ${username} deleted successfully.`);
+            return res.status(200).json({ msg: 'User data deleted successfully' });
+        }
 
-        // Clear all journal entries
-        userData.journal = [];
+        const fileData = fs.readFileSync(filedir, 'utf-8');
+        let userData = JSON.parse(fileData);
 
-        // Write updated data back to file
+        switch (type) {
+            case "mood":
+                userData.reflections = [];
+                break;
+            case "distraction":
+                userData.distractions = [];
+                break;
+            case "habits":
+                userData.habits = [];
+                break;
+            case "gratitude":
+                userData.gratitude = [];
+                break;
+            case "reflections":
+                userData.reflections = [];
+                break;
+            case "milestones":
+                userData.milestones = [];
+                break;
+            case "tips":
+                userData.tips = [];
+                break;
+            case "settings":
+                userData.settings = { darkMode: false, notifications: 'off', music: 'none' };
+                break;
+            case "actions":
+                userData.actions = [];
+                break;
+            default:
+                return res.status(400).json({ msg: 'Invalid type provided' });
+        }
+
         fs.writeFileSync(filedir, JSON.stringify(userData, null, 2), 'utf-8');
-        res.status(200).json({ msg: 'All journal entries deleted successfully' });
+        res.status(200).json({ msg: `Cleared ${type} data successfully` });
+
     } catch (err) {
-        console.error('Error deleting all journals:', err);
+        console.error('Error processing clean operation:', err);
         res.status(500).json({ msg: `error: ${err.message}` });
     }
 });
+
+
 
 module.exports = router;

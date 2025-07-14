@@ -10,6 +10,7 @@ setInterval(() => {
     console.warn("ad blocker may cause player issues; ensure you're not using Brave or any ad blocker");
 }, 3000);
 
+
 const defaultHomdata = {
     user: {
         name: uname,
@@ -44,8 +45,7 @@ const defaultHomdata = {
     tasks: [],
     pomodoro: {
         tasks: [
-            { name: 'Work on project', duration: 25, break: 5, completed: false, timeSpent: 0, isActive: false, timestamp: new Date().toISOString() },
-            { name: 'Study chapter 3', duration: 25, break: 5, completed: false, timeSpent: 0, isActive: false, timestamp: new Date().toISOString() }
+           
         ],
         history: [],
         settings: { workDuration: 25, breakDuration: 5 }
@@ -54,8 +54,7 @@ const defaultHomdata = {
     distractions: [],
     actions: [],
     habits: [
-        { name: 'Meditation', progress: '4/7', goal: 7 },
-        { name: 'Waking up early', progress: '6/7', goal: 7 }
+        
     ],
     gratitude: [],
     reflections: [],
@@ -394,6 +393,9 @@ function animateRemoveElement(elementOrId, callback) {
 }
 
 function redirectTo(feature) {
+    if(feature=="leaderboard") {
+        window.location.href = '/home/leaderboard/lead/prams?username=default&page=1&limit=10&users=true';        
+    }
     updateHomdata('action', `navigate_${feature}`);
     const name = encodeURIComponent(homdata.user.name);
     window.location.href = `/home/${feature}/${name}`;
@@ -804,7 +806,7 @@ function completeHabit(name) {
 function addHabit() {
     const habitName = document.getElementById('newHabit')?.value;
     const habitGoal = parseInt(document.getElementById('habitGoal')?.value);
-    if (habitName && habitGoal >= 1 && habitGoal <= 7) {
+    if (habitName  && habitGoal >= 7) {
         updateHomdata('habit', { name: habitName, goal: habitGoal });
         document.getElementById('newHabit').value = '';
         document.getElementById('habitGoal').value = '';
@@ -949,7 +951,12 @@ function addCustomMusic() {
             btn.addEventListener('click', () => {
                 playClickSound();
                 const feature = btn.dataset.feature;
-                redirectTo(feature);
+                if(feature === 'ededleaderboard') {
+                    window.location.href = `/home/leaderboard/lead/prams?username=default&page=1&limit=10&users=true`;
+                }else{
+                    redirectTo(feature)
+                }
+                
             });
         });
 

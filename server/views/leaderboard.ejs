@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard</title>
+  <link rel="stylesheet" href="/css/lead.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+</head>
+<body>
+  <div class="theme-toggle" id="themeToggle">
+    <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+  </div>
+
+  <div class="flex flex-col min-h-screen">
+    <div class="container">
+      <button class="scroll-to-rank" id="scrollToRank">Scroll to My Rank</button>
+      <h1>Leaderboard</h1>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search users...">
+        <div class="autocomplete" id="autocomplete"></div>
+      </div>
+
+      <div class="leaderboard" id="leaderboard">
+        <!-- Leaderboard items will be dynamically inserted here -->
+      </div>
+
+      <div class="pagination">
+        <button id="prevPage" disabled>Previous</button>
+        <button id="nextPage">Next</button>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <h2>Insights</h2>
+      <div class="summary">
+        <p>📈 <strong>Top Gainer:</strong> <span id="topGainer">Loading...</span></p>
+        <p>⚡️ <strong>Most Active:</strong> <span id="mostActive">Loading...</span></p>
+        <p>🎯 <strong>Your Progress:</strong> <span id="yourProgress">Loading...</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="profileModal">
+    <div class="modal-content">
+      <button class="close-modal" id="closeModal">×</button>
+      <h2 id="modalUsername"></h2>
+      <p id="modalDetails"></p>
+    </div>
+  </div>
+
+  <script src="/js/lead.js"></script>
+</body>
+</html>

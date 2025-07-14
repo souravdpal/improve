@@ -1,15 +1,15 @@
 {
   "user": {
     "name": "souravdp",
-    "streak": 7,
-    "currentMood": "stressed",
+    "streak": 3,
+    "currentMood": "Not set",
     "goal": "Overcome procrastination and build discipline",
     "streakHistory": [
-      5,
-      6,
-      7
+      3,
+      2,
+      1
     ],
-    "avatar": "data:image/png;base64,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",
+    "avatar": "data:image/png;base64,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",
     "playlist": [
       {
         "tag": "rain",
@@ -22,278 +22,121 @@
       {
         "tag": "forest",
         "url": "https://www.youtube.com/watch?v=IvjMgVS6kng"
+      },
+      {
+        "tag": "salvatore",
+        "url": "https://www.youtube.com/watch?v=GVQON-muEFc"
+      },
+      {
+        "tag": "cry",
+        "url": "https://www.youtube.com/watch?v=BfU1iB7UBH0"
+      },
+      {
+        "tag": "rest_time",
+        "url": "https://www.youtube.com/watch?v=EyyfRW3WC5c"
+      },
+      {
+        "tag": "interseteller",
+        "url": "https://www.youtube.com/watch?v=p2zMXSXhZ9M"
+      },
+      {
+        "tag": "ambient_calming",
+        "url": "https://www.youtube.com/watch?v=xDih5SwFs_c"
+      },
+      {
+        "tag": "calm_anxiety",
+        "url": "https://www.youtube.com/watch?v=zPyg4N7bcHM"
+      },
+      {
+        "tag": "motivation_speech",
+        "url": "https://www.youtube.com/watch?v=VfNCUm7_FMU"
+      },
+      {
+        "tag": "madra_uchiha_speech",
+        "url": "https://www.youtube.com/watch?v=ZR377rPci64"
+      },
+      {
+        "tag": "hope",
+        "url": "https://www.youtube.com/watch?v=xfzhezl_jts"
+      },
+      {
+        "tag": "world_best_speech",
+        "url": "https://www.youtube.com/watch?v=UF8uR6Z6KLc"
+      },
+      {
+        "tag": "elon_musk",
+        "url": "https://www.youtube.com/watch?v=k9zTr2MAFRg"
+      },
+      {
+        "tag": "calmdown",
+        "url": "https://www.youtube.com/watch?v=0L38Z9hIi5s"
+      },
+      {
+        "tag": "study",
+        "url": "https://www.youtube.com/watch?v=idRi7ob_cQw"
+      },
+      {
+        "tag": "coding",
+        "url": "https://www.youtube.com/watch?v=Yd7vDterctQ"
+      },
+      {
+        "tag": "chill_beats",
+        "url": "https://www.youtube.com/watch?v=sF80I-TQiW0"
+      },
+      {
+        "tag": "lucid_dreams",
+        "url": "https://www.youtube.com/watch?v=ff90ZV3OEsg"
       }
     ]
   },
   "tasks": [],
   "pomodoro": {
-    "tasks": [
-      {
-        "name": "Work on project",
-        "duration": 25,
-        "break": 5,
-        "completed": true,
-        "timeSpent": 0,
-        "isActive": false,
-        "timestamp": "2025-07-10T19:52:11.553Z"
-      },
-      {
-        "name": "Study chapter 3",
-        "duration": 25,
-        "break": 5,
-        "completed": true,
-        "timeSpent": 0,
-        "isActive": false,
-        "timestamp": "2025-07-10T19:52:11.553Z"
-      },
-      {
-        "name": "b",
-        "duration": 1,
-        "break": 1,
-        "completed": true,
-        "timestamp": "2025-07-10T20:00:39.603Z",
-        "timeSpent": 61,
-        "isActive": false
-      },
-      {
-        "name": "j",
-        "duration": 1,
-        "break": 1,
-        "completed": false,
-        "timestamp": "2025-07-10T20:02:26.042Z",
-        "timeSpent": 0,
-        "isActive": false
-      }
-    ],
-    "history": [
-      {
-        "name": "Study chapter 3",
-        "duration": 25,
-        "completedAt": "2025-07-10T20:01:46.911Z"
-      },
-      {
-        "name": "Work on project",
-        "duration": 25,
-        "completedAt": "2025-07-10T20:01:49.071Z"
-      },
-      {
-        "name": "b",
-        "duration": 1,
-        "completedAt": "2025-07-10T20:01:57.081Z"
-      },
-      {
-        "name": "b",
-        "duration": 1,
-        "completedAt": "2025-07-10T20:02:04.149Z"
-      }
-    ],
+    "tasks": [],
+    "history": [],
     "settings": {
-      "workDuration": 1,
-      "breakDuration": 1
+      "workDuration": 25,
+      "breakDuration": 5
     }
   },
-  "moods": [
-    {
-      "mood": "stressed",
-      "timestamp": "2025-07-10T20:03:21.517Z",
-      "id": "mood-1752177801517"
-    }
-  ],
+  "moods": [],
   "distractions": [],
   "actions": [
     {
-      "action": "update_streak",
-      "timestamp": "2025-07-10T20:01:57.081Z",
-      "id": "action-1752177717081"
-    },
-    {
-      "action": "update_streak",
-      "timestamp": "2025-07-10T20:02:04.149Z",
-      "id": "action-1752177724149"
+      "action": "generate_avatar",
+      "timestamp": "2025-07-14T18:31:42.576Z",
+      "id": "action-1752517902576"
     },
     {
       "action": "daily_reminder_morning",
-      "timestamp": "2025-07-10T20:02:10.736Z",
-      "id": "action-1752177730736"
+      "timestamp": "2025-07-14T18:31:42.590Z",
+      "id": "action-1752517902590"
     },
     {
-      "action": "daily_reminder_morning",
-      "timestamp": "2025-07-10T20:02:16.781Z",
-      "id": "action-1752177736781"
-    },
-    {
-      "action": "daily_reminder_morning",
-      "timestamp": "2025-07-10T20:02:18.252Z",
-      "id": "action-1752177738252"
-    },
-    {
-      "action": "daily_reminder_morning",
-      "timestamp": "2025-07-10T20:02:30.106Z",
-      "id": "action-1752177750106"
-    },
-    {
-      "action": "navigate_tracker",
-      "timestamp": "2025-07-10T20:03:23.770Z",
-      "id": "action-1752177803770"
-    },
-    {
-      "action": "daily_reminder_morning",
-      "timestamp": "2025-07-10T20:03:26.139Z",
-      "id": "action-1752177806139"
-    },
-    {
-      "action": "navigate_leaderboard",
-      "timestamp": "2025-07-10T20:03:29.624Z",
-      "id": "action-1752177809624"
-    },
-    {
-      "action": "daily_reminder_afternoon",
-      "timestamp": "2025-07-11T07:31:45.075Z",
-      "id": "action-1752219105075"
+      "action": "navigate_mood",
+      "timestamp": "2025-07-14T18:31:47.233Z",
+      "id": "action-1752517907233"
     }
   ],
-  "habits": [
-    {
-      "name": "Meditation",
-      "progress": "7/7",
-      "goal": 7
-    },
-    {
-      "name": "Waking up early",
-      "progress": "6/7",
-      "goal": 7
-    }
-  ],
-  "gratitude": [
-    {
-      "text": "vb b",
-      "timestamp": "2025-07-10T20:00:04.659Z",
-      "id": "gratitude-1752177604659"
-    },
-    {
-      "text": "n n",
-      "timestamp": "2025-07-10T20:00:07.344Z",
-      "id": "gratitude-1752177607344"
-    },
-    {
-      "text": "n n nd",
-      "timestamp": "2025-07-10T20:02:44.470Z",
-      "id": "gratitude-1752177764470"
-    },
-    {
-      "text": "d",
-      "timestamp": "2025-07-10T20:02:46.503Z",
-      "id": "gratitude-1752177766503"
-    },
-    {
-      "text": "ddd",
-      "timestamp": "2025-07-10T20:02:50.351Z",
-      "id": "gratitude-1752177770351"
-    },
-    {
-      "text": "ddd",
-      "timestamp": "2025-07-10T20:02:52.543Z",
-      "id": "gratitude-1752177772543"
-    },
-    {
-      "text": "ddd",
-      "timestamp": "2025-07-10T20:02:56.600Z",
-      "id": "gratitude-1752177776600"
-    },
-    {
-      "text": "ddddddddddddddddddddddddd",
-      "timestamp": "2025-07-10T20:03:00.232Z",
-      "id": "gratitude-1752177780232"
-    },
-    {
-      "text": "dsdsdsdsdds",
-      "timestamp": "2025-07-10T20:03:10.490Z",
-      "id": "gratitude-1752177790490"
-    }
-  ],
-  "reflections": [
-    {
-      "text": "n n",
-      "timestamp": "2025-07-10T20:00:10.923Z",
-      "id": "reflection-1752177610923"
-    },
-    {
-      "text": "m nnm,n",
-      "timestamp": "2025-07-10T20:00:13.718Z",
-      "id": "reflection-1752177613718"
-    },
-    {
-      "text": "mnm n",
-      "timestamp": "2025-07-10T20:00:16.261Z",
-      "id": "reflection-1752177616261"
-    }
-  ],
+  "habits": [],
+  "gratitude": [],
+  "reflections": [],
   "milestones": [
     {
       "text": "Reached 3-day streak!",
-      "timestamp": "2025-07-10T19:52:11.553Z"
-    },
-    {
-      "text": "Reached 5-day streak! 🎉",
-      "timestamp": "2025-07-10T20:01:49.071Z",
-      "id": "milestone-1752177709071"
+      "timestamp": "2025-07-14T18:31:42.374Z"
     }
   ],
   "tips": [
     {
-      "text": "Write down one thing you’re grateful for.",
-      "timestamp": "2025-07-10T19:52:11.602Z"
-    },
-    {
-      "text": "Write down one thing you’re grateful for.",
-      "timestamp": "2025-07-10T19:59:30.464Z",
-      "id": "tip-1752177570464"
-    },
-    {
-      "text": "Write down one thing you’re grateful for.",
-      "timestamp": "2025-07-10T20:00:43.943Z",
-      "id": "tip-1752177643943"
-    },
-    {
-      "text": "Write down one thing you’re grateful for.",
-      "timestamp": "2025-07-10T20:00:50.596Z",
-      "id": "tip-1752177650596"
-    },
-    {
-      "text": "Write down one thing you’re grateful for.",
-      "timestamp": "2025-07-10T20:02:10.738Z",
-      "id": "tip-1752177730738"
-    },
-    {
-      "text": "Write down one thing you’re grateful for.",
-      "timestamp": "2025-07-10T20:02:16.782Z",
-      "id": "tip-1752177736782"
-    },
-    {
-      "text": "Write down one thing you’re grateful for.",
-      "timestamp": "2025-07-10T20:02:18.253Z",
-      "id": "tip-1752177738253"
-    },
-    {
-      "text": "Write down one thing you’re grateful for.",
-      "timestamp": "2025-07-10T20:02:30.107Z",
-      "id": "tip-1752177750107"
-    },
-    {
-      "text": "Write down one thing you’re grateful for.",
-      "timestamp": "2025-07-10T20:03:26.140Z",
-      "id": "tip-1752177806140"
-    },
-    {
-      "text": "Write down one thing you’re grateful for.",
-      "timestamp": "2025-07-11T07:31:45.077Z",
-      "id": "tip-1752219105077"
+      "text": "Step away for a 2-minute stretch.",
+      "timestamp": "2025-07-14T18:31:42.592Z",
+      "id": "tip-1752517902592"
     }
   ],
   "settings": {
-    "darkMode": true,
+    "darkMode": false,
     "notifications": "off",
-    "music": "rain",
-    "musicTime": 118.882377
+    "music": "none",
+    "musicTime": 0
   }
 }

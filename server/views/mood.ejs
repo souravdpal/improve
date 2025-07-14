@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talk to AI Friend - AI Therapist</title>
     <link rel="stylesheet" href="/css/tracker.css">
     <link rel="stylesheet" href="/css/fai.css">
-    <script src="/js/fai.js" defer></script>
-    <script defer src="/js/music.js"></script>
-    <script src="https://www.youtube.com/iframe_api"></script>
+
 </head>
+
 <body>
     <div class="talk-container">
         <header class="talk-header">
-            <a  class="nav-icon" onclick="io()">←</a>
+            <a class="nav-icon" onclick="io()">←</a>
             <h1>Talk to AI Friend</h1>
         </header>
         <script>
-            function io (){
+            function io() {
                 window.history.back();
             }
         </script>
@@ -45,6 +45,8 @@
                 </select>
                 <input type="text" id="friend-behavior" placeholder="Behavior (e.g., Empathetic, witty)">
                 <input type="text" id="friend-works" placeholder="Works (e.g., Therapist, coach)">
+                <input type="memo" id="friend-memo"
+                    placeholder="what you want your freind should know? (e.g., your hobbies?)">
                 <button class="action-btn" onclick="saveFriend()">Save</button>
                 <button class="action-btn" onclick="closeFriendModal()">Cancel</button>
             </div>
@@ -61,5 +63,10 @@
         </div>
         <canvas id="celebration"></canvas>
     </div>
+
+    <script defer src="/js/fai.js" defer></script>
+    <script defer src="/js/music.js"></script>
+    <script defer src="https://www.youtube.com/iframe_api"></script>
 </body>
+
 </html>

@@ -1,9 +1,14 @@
 :root {
-  --primary-color: #2d3748; /* Slate gray */
-  --accent-color: #38a169; /* Green */
-  --secondary-accent: #4299e1; /* Blue */
-  --background-light: #f7fafc; /* Light background */
-  --background-dark: #1a202c; /* Dark background */
+  --primary-color: #2d3748;
+  /* Slate gray */
+  --accent-color: #38a169;
+  /* Green */
+  --secondary-accent: #4299e1;
+  /* Blue */
+  --background-light: #f7fafc;
+  /* Light background */
+  --background-dark: #1a202c;
+  /* Dark background */
   --card-background-light: #ffffff;
   --card-background-dark: #2d3748;
   --text-light: #1a202c;
@@ -320,7 +325,9 @@ html[data-theme="dark"] .btn-gradient:hover {
   color: var(--accent-color);
 }
 
-.card p, .card label, .card span {
+.card p,
+.card label,
+.card span {
   font-size: 0.95rem;
   line-height: 1.5;
   font-weight: 500;
@@ -374,7 +381,8 @@ html[data-theme="dark"] .distraction-tracker select::placeholder {
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
 }
 
-.gratitude-log textarea, .mood-reflection textarea {
+.gratitude-log textarea,
+.mood-reflection textarea {
   resize: vertical;
   min-height: 100px;
   max-height: 150px;
@@ -722,8 +730,15 @@ html[data-theme="dark"] .pomodoro-task.completed {
 }
 
 @keyframes visualize {
-  0% { transform: scaleY(0.4); opacity: 0.7; }
-  100% { transform: scaleY(1); opacity: 1; }
+  0% {
+    transform: scaleY(0.4);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
 
 /* Toggle Switch */
@@ -959,8 +974,19 @@ html[data-theme="dark"] .pomodoro-task.completed {
 }
 
 @keyframes breathe {
-  0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 0 rgba(56, 161, 105, 0.7); }
-  50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 0 20px rgba(56, 161, 105, 0); }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(56, 161, 105, 0.7);
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 0 0 0 20px rgba(56, 161, 105, 0);
+  }
 }
 
 /* Media Queries */
@@ -1096,11 +1122,18 @@ html[data-theme="dark"] .pomodoro-task.completed {
     font-size: 1.4rem;
   }
 
-  .card p, .card label, .card span {
+  .card p,
+  .card label,
+  .card span {
     font-size: 0.9rem;
   }
 
-  .pomodoro-task, .habit-list p, .distraction-tracker p, .milestones p, .gratitude-log p, .mood-reflection p {
+  .pomodoro-task,
+  .habit-list p,
+  .distraction-tracker p,
+  .milestones p,
+  .gratitude-log p,
+  .mood-reflection p {
     gap: 8px;
     padding: 8px;
   }
@@ -1139,4 +1172,195 @@ html[data-theme="dark"] .pomodoro-task.completed {
     padding: 8px 14px;
     font-size: 0.9rem;
   }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: var(--transition-medium);
+  max-height: 350px;
+  /* content grows until 350px */
+  overflow-y: auto;
+  /* scrolls if more than 350px */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+}
+
+.milestones p,
+.gratitude-log p,
+.mood-reflection p {
+  padding: 10px;
+  border-radius: var(--border-radius-sm);
+  background: rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: revert;
+  transition: var(--transition-fast);
+}
+.scrollable {
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Chrome, Safari */
+.scrollable::-webkit-scrollbar {
+  display: none;
+}
+/* For Firefox */
+.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.3) transparent;
+}
+
+/* For Chrome, Edge, Safari */
+.scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: var(--transition-medium);
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  /* min-height: auto; ← optional */
+}
+.card::-webkit-scrollbar {
+  width: 6px;
+}
+.card::-webkit-scrollbar-track {
+  background: transparent;
+}
+.card::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.card {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(0,0,0,0.15) transparent;
+}
+.card {
+  min-height: auto;
+  max-height: none;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: var(--card-gradient-light);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-light);
+  max-height: 350px;
+  overflow: hidden; /* block scroll overflow */
+}
+
+.card-scroll-content {
+  overflow-y: auto;
+  max-height: 100%;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.card-scroll-content::-webkit-scrollbar {
+  width: 6px;
+}
+.card-scroll-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+.card-scrollable {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: 0;
+  max-height: 100%;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.card-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+.card-scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+.card-scrollable::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.broom-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 50%;
+  padding: 6px 10px;
+  margin-left: auto;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.broom-btn:hover {
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 4px 12px rgba(56, 161, 105, 0.3);
+  transform: rotate(-10deg) scale(1.05);
+}
+
+.broom-btn i {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.broom-btn:hover i {
+  transform: rotate(20deg);
+}
+.broom-btn i {
+  font-size: 1rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+.broom-btn {
+  position: relative;
+}
+
+.broom-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e53e3e;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.broom-btn:hover::after {
+  opacity: 1;
 }

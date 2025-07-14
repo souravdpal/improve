@@ -1,55 +1,16 @@
+
+
 // UUID generator
 function generateUUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
 }
 
-let homdata = {
-    user: {
-        name: localStorage.getItem('preferredName') || localStorage.getItem('username') || 'Guest',
-        streak: 3,
-        currentMood: 'Not set',
-        goal: 'Overcome procrastination and build discipline',
-        streakHistory: [3, 2, 1],
-        avatar: ''
-    },
-    tasks: [
-        { name: 'Walk 30 mins', completed: false, timestamp: new Date().toISOString() },
-        { name: 'No social media for 2 hrs', completed: false, timestamp: new Date().toISOString() },
-        { name: 'Study 6 hrs', completed: false, timestamp: new Date().toISOString() }
-    ],
-    moods: [],
-    distractions: [],
-    actions: [],
-    habits: [
-        { name: 'Meditation', progress: '4/7', goal: 7 },
-        { name: 'Waking up early', progress: '6/7', goal: 7 }
-    ],
-    gratitude: [],
-    journal: [],
-    reflections: [],
-    milestones: [{ text: 'Reached 3-day streak!', timestamp: new Date().toISOString() }],
-    tips: [],
-    settings: { darkMode: false, notifications: 'off', music: 'none' },
-    playlist: [],
-    navigation: [],
-    messages: [],
-    track: [],
-    friends: [
-        {
-            id: 'default-hina',
-            name: 'HINA',
-            gender: 'female',
-            behavior: 'Empathetic, supportive',
-            works: 'Therapist'
-        }
-    ],
-    selectedFriend: 'default-hina'
-};
+let getid = generateUUID();
 
-// Audio for click and completion sounds
+// Audio setup
 const clickSound = new Audio('/sounds/click');
 const completeSound = new Audio('/sounds/fun');
 
@@ -69,6 +30,7 @@ function triggerCelebration() {
     canvas.height = window.innerHeight;
     const ctx = canvas.getContext('2d');
     const particles = [];
+
     for (let i = 0; i < 50; i++) {
         particles.push({
             x: canvas.width / 2,
@@ -80,6 +42,7 @@ function triggerCelebration() {
             opacity: 1
         });
     }
+
     let frame = 0;
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -90,6 +53,7 @@ function triggerCelebration() {
             p.speed *= 0.98;
             p.opacity *= 0.98;
             p.radius *= 0.98;
+
             if (p.opacity > 0.1 && p.radius > 0.1) {
                 hasVisibleParticles = true;
                 ctx.globalAlpha = p.opacity;
@@ -100,6 +64,7 @@ function triggerCelebration() {
                 ctx.globalAlpha = 1;
             }
         });
+
         frame++;
         if (frame < 120 && hasVisibleParticles) {
             requestAnimationFrame(animate);
@@ -108,14 +73,18 @@ function triggerCelebration() {
             canvas.style.display = 'none';
         }
     }
+
     animate();
     playCompleteSound();
 }
 
-// Send friend data to /ai/save/:id/:username
+// Card placeholder
+let Card = {};
+
+// API: Send friend data to /ai/save
 async function sendFriendToApi(friend) {
     try {
-        const response = await fetch(`/ai/save/${friend.id}/${homdata.user.name}`, {
+        const response = await fetch(`/ai/save/${getid}/${localStorage.getItem('username')}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(friend)
@@ -123,64 +92,80 @@ async function sendFriendToApi(friend) {
         if (!response.ok) throw new Error('Friend save API request failed');
         console.log('Friend sent to /ai/save:', friend);
     } catch (error) {
-        // Suppress API error logging
+        // Silent fail
     }
 }
 
-// Fetch friends from /ai/show/:username
+// API: Fetch friends (adjusted for new structure)
 async function fetchFriends() {
     try {
-        const response = await fetch(`/ai/show/${homdata.user.name}`);
+        const response = await fetch(`/ai/save/${localStorage.getItem("username")}`);
         if (!response.ok) throw new Error('Fetch friends API request failed');
-        const friends = await response.json();
-        homdata.friends = friends;
+        const raw = await response.json();
+
+        console.log("RAW CHAR DATA:", raw.char);
+
+        if (Array.isArray(raw.char)) {
+            homdata.friends = raw.char.map(f => ({
+                id: f.CharId,
+                name: f.name,
+                gender: f.gender || 'unknown',
+                behavior: f.behavior || '',
+                works: f.works || '',
+                memo: f.memo || ''
+            }));
+        } else if (typeof raw.char === 'object') {
+            homdata.friends = [{
+                id: raw.char.CharId,
+                name: raw.char.name,
+                gender: raw.char.gender || 'unknown',
+                behavior: raw.char.behavior || '',
+                works: raw.char.works || '',
+                memo: raw.char.memo || ''
+            }];
+        } else {
+            homdata.friends = [];
+        }
     } catch (error) {
-        // Mock friends data
-        homdata.friends = [
-            {
-                id: 'default-hina',
-                name: 'HINA',
-                gender: 'female',
-                behavior: 'Empathetic, supportive',
-                works: 'Therapist'
-            },
-            {
-                id: 'mock1',
-                name: 'Alex',
-                gender: 'male',
-                behavior: 'Witty, motivational',
-                works: 'Coach'
-            },
-            {
-                id: 'mock2',
-                name: 'Luna',
-                gender: 'female',
-                behavior: 'Calm, insightful',
-                works: 'Counselor'
-            }
-        ];
+        console.error('Fetch friend error:', error);
+        let fr = {
+            id : generateUUID(),
+            name :"Hina",
+            gender :"Female",
+            behavior: "Witty , cute , shy , sweet , loving , caring , freindly, and blushing and beutiful",
+            work : "hina is a freind where she and both you are collage freinds",
+            memo : null
+        }
+        sendFriendToApi(fr)
     }
 }
 
-// Send chat message to /ai/f/data
+// API: Send message to /ai/f/data
 async function sendMessageToApi(text, friendId) {
     try {
-        const response = await fetch(`/ai/f/data?username=${homdata.user.name}&character=${friendId}`, {
+        const friend = homdata.friends.find(f => f.id === friendId);
+        const response = await fetch(`/ai/f/data`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text })
+            body: JSON.stringify({
+                username: homdata.user.name,
+                CharId: friend.id,
+                name: friend.name,
+                text: text
+            })
         });
+
         if (!response.ok) throw new Error('Chat API request failed');
         const data = await response.json();
-        return data.response;
+        console.log(data)
+        return data.response.response || '...';
     } catch (error) {
-        // Mock chat response
         const friend = homdata.friends.find(f => f.id === friendId);
-        return `${friend.name}: Hey ${homdata.user.name}, you said "${text}". I'm here to help! How about we discuss your goals?`;
+        return `${friend.name}: I'm sorry, something went wrong. Let's try again.`;
     }
 }
 
-// Get URL parameters
+// Get URL params
 function getUrlParams() {
     const path = window.location.pathname.split('/');
     return {
@@ -189,7 +174,7 @@ function getUrlParams() {
     };
 }
 
-// Initialize talk page
+// Init
 async function initializeTalk() {
     const { mode, user } = getUrlParams();
     homdata.user.name = user;
@@ -199,7 +184,7 @@ async function initializeTalk() {
     updateChatBox();
 }
 
-// Update friend scroll bar
+// Friend list UI
 function updateFriendScroll() {
     const friendScroll = document.getElementById('friend-scroll');
     friendScroll.innerHTML = homdata.friends.map(f => `
@@ -209,7 +194,7 @@ function updateFriendScroll() {
     `).join('');
 }
 
-// Update chat box
+// Chat UI
 function updateChatBox() {
     const chatBox = document.getElementById('chat-box');
     chatBox.innerHTML = homdata.messages
@@ -222,7 +207,7 @@ function updateChatBox() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Open friend modal
+// Modal controls
 function openFriendModal() {
     playClickSound();
     document.getElementById('friendModal').classList.add('active');
@@ -230,9 +215,9 @@ function openFriendModal() {
     document.getElementById('friend-gender').value = 'female';
     document.getElementById('friend-behavior').value = '';
     document.getElementById('friend-works').value = '';
+    document.getElementById('friend-memo').value = '';
 }
 
-// Close friend modal
 function closeFriendModal() {
     playClickSound();
     document.getElementById('friendModal').classList.remove('active');
@@ -245,14 +230,19 @@ async function saveFriend() {
     const gender = document.getElementById('friend-gender').value;
     const behavior = document.getElementById('friend-behavior').value.trim();
     const works = document.getElementById('friend-works').value.trim();
+    const memo = document.getElementById('friend-memo').value.trim();
+
     if (!name || !behavior || !works) return;
+
     const friend = {
         id: generateUUID(),
         name,
         gender,
         behavior,
-        works
+        works,
+        memo
     };
+
     homdata.friends.push(friend);
     await sendFriendToApi(friend);
     updateFriendScroll();
@@ -273,40 +263,51 @@ function viewFriend(friendId) {
     playClickSound();
     const friend = homdata.friends.find(f => f.id === friendId);
     document.getElementById('view-name').textContent = `Name: ${friend.name}`;
-    document.getElementById('view-gender').textContent = `Gender: ${friend.gender.charAt(0).toUpperCase() + friend.gender.slice(1)}`;
+    document.getElementById('view-gender').textContent = `Gender: ${friend.gender}`;
     document.getElementById('view-behavior').textContent = `Behavior: ${friend.behavior}`;
     document.getElementById('view-works').textContent = `Works: ${friend.works}`;
+    document.getElementById('view-memo').textContent = `Memo: ${friend.memo || '-'}`;
     document.getElementById('viewModal').classList.add('active');
 }
 
-// Close view modal
 function closeViewModal() {
     playClickSound();
     document.getElementById('viewModal').classList.remove('active');
 }
 
-// Send chat message
+// Send message
 async function sendMessage() {
     playClickSound();
-    const text = document.getElementById('chat-message').value.trim();
-    if (!text) return;
-    homdata.messages.push({
-        sender: 'user',
-        text,
-        friendId: homdata.selectedFriend,
-        timestamp: new Date().toISOString()
-    });
-    document.getElementById('chat-message').value = '';
+    const input = document.getElementById('chat-message');
+    const text = input.value.trim();
+    if (!text || !homdata.selectedFriend) return;
+
+    homdata.messages.push({ sender: 'user', text, friendId: homdata.selectedFriend });
+    input.value = '';
     updateChatBox();
-    const response = await sendMessageToApi(text, homdata.selectedFriend);
-    homdata.messages.push({
-        sender: 'ai',
-        text: response,
-        friendId: homdata.selectedFriend,
-        timestamp: new Date().toISOString()
-    });
+
+    const aiResponse = await sendMessageToApi(text, homdata.selectedFriend);
+    homdata.messages.push({ sender: 'ai', text: aiResponse, friendId: homdata.selectedFriend });
     updateChatBox();
 }
 
+// Global app state
+let homdata = {
+    user: { name: '' },
+    mode: '',
+    messages: [],
+    friends: [],
+    selectedFriend: null
+};
+
 // Initialize
 initializeTalk();
+
+// Expose globally for inline onclick handlers
+window.openFriendModal = openFriendModal;
+window.closeFriendModal = closeFriendModal;
+window.saveFriend = saveFriend;
+window.sendMessage = sendMessage;
+window.selectFriend = selectFriend;
+window.viewFriend = viewFriend;
+window.closeViewModal = closeViewModal;
