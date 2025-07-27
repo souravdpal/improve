@@ -1,0 +1,28 @@
+{
+  "user": {
+    "name": "shrutu",
+    "streak": 0,
+    "currentMood": "",
+    "goal": "",
+    "streakHistory": [],
+    "avatar": "",
+    "playlist": [],
+    "createdAt": "2025-07-21T16:04:24.232Z",
+    "lastActive": "2025-07-21T16:04:24.234Z"
+  },
+  "moods": [],
+  "distractions": [],
+  "actions": [],
+  "habits": [],
+  "gratitude": [],
+  "reflections": [],
+  "milestones": [],
+  "tips": [],
+  "tasks": [],
+  "settings": {
+    "darkMode": false,
+    "notifications": "off",
+    "music": "",
+    "musicTime": 0
+  }
+}

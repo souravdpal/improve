@@ -10,7 +10,7 @@ const ai = require('./router/ai')
 const thera = require('./router/therapy');
 const { json } = require("stream/consumers");
 let dbPath = "./database";
-let fai= require('./router/fai')
+let fai = require('./router/fai')
 if (!fs.existsSync(dbPath)) {
   fs.mkdirSync(dbPath);
   console.log("📁 Created 'database' folder");
@@ -39,16 +39,30 @@ app.get("/sounds/:id", (req, res) => {
   let id = req.params.id;
   res.sendFile(path.join(__dirname, "..", "public", "assets", "sounds", `${id}.mp3`));
 });
+app.get("/Home",(req,res)=>{
+  res.render('home')
+})
+
+
+app.get("/home/leaderboard/lead/prams",(req,res)=>{
+  res.render('leaderboard')
+})
+
 
 app.get("/home/:feature/:name", (req, res) => {
   const feature = req.params.feature;
   const name = req.params.name;
-  try {
-    res.render(`${feature}`, { name });
-  } catch (err) {
-    res.status(404).send("Page not found");
+
+  const viewPath = path.join(__dirname, "views", `${feature}.ejs`);
+
+  if (fs.existsSync(viewPath)) {
+    res.render(feature, { name });
+  } else {
+    console.warn(`⚠️ View not found: ${feature}.ejs`);
+    res.status(404).render("404");
   }
 });
+
 
 app.post("/data/reg", async (req, res) => {
   const data = req.body;
@@ -209,14 +223,22 @@ app.post("/home/leaderboard/:id", async (req, res) => {
     res.status(500).json({ msg: "Internal server error" });
   }
 });
-
+const datatracker = require('./router/tracker')
 app.use('/home', homedata);
 app.use('/ai', ai)
 app.use('/home', thera)
-app.use('/ai' ,fai)
+app.use('/ai', fai)
+app.use('/data', datatracker)
 
 
 console.log("✅ Everything above listen() passed...");
+
+
+app.use((req, res) => {
+  console.log('user hit the $)$')
+  // You can show a custom message, log the access, or even redirect
+  res.status(404).render('404');
+});
 app.listen(port, () => {
   console.log(`Your app is listening at http://localhost:${port}`);
 });

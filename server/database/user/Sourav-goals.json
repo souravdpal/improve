@@ -2,7 +2,7 @@
   "user": {
     "name": "Sourav",
     "streak": 3,
-    "currentMood": "happy",
+    "currentMood": "angry",
     "goal": "Overcome procrastination and build discipline",
     "streakHistory": [
       3,
@@ -100,29 +100,54 @@
   },
   "moods": [
     {
-      "mood": "neutral",
-      "timestamp": "2025-07-13T12:02:43.916Z",
-      "id": "mood-1752408163916"
-    },
-    {
-      "mood": "neutral",
-      "timestamp": "2025-07-13T12:02:57.468Z",
-      "id": "mood-1752408177468"
-    },
-    {
-      "mood": "neutral",
-      "timestamp": "2025-07-13T12:05:53.640Z",
-      "id": "mood-1752408353640"
-    },
-    {
-      "mood": "stressed",
-      "timestamp": "2025-07-13T12:37:23.697Z",
-      "id": "mood-1752410243697"
-    },
-    {
       "mood": "happy",
-      "timestamp": "2025-07-14T15:23:28.459Z",
-      "id": "mood-1752506608459"
+      "timestamp": "2025-07-21T04:58:42.035Z",
+      "id": "mood-1753073922035"
+    },
+    {
+      "mood": "sad",
+      "timestamp": "2025-07-21T04:58:48.710Z",
+      "id": "mood-1753073928710"
+    },
+    {
+      "mood": "angry",
+      "timestamp": "2025-07-21T04:58:50.526Z",
+      "id": "mood-1753073930526"
+    },
+    {
+      "mood": "angry",
+      "timestamp": "2025-07-21T04:58:50.695Z",
+      "id": "mood-1753073930695"
+    },
+    {
+      "mood": "angry",
+      "timestamp": "2025-07-21T04:58:50.855Z",
+      "id": "mood-1753073930855"
+    },
+    {
+      "mood": "angry",
+      "timestamp": "2025-07-21T04:58:51.010Z",
+      "id": "mood-1753073931010"
+    },
+    {
+      "mood": "angry",
+      "timestamp": "2025-07-21T04:58:51.183Z",
+      "id": "mood-1753073931183"
+    },
+    {
+      "mood": "angry",
+      "timestamp": "2025-07-21T04:58:51.363Z",
+      "id": "mood-1753073931363"
+    },
+    {
+      "mood": "angry",
+      "timestamp": "2025-07-21T04:58:52.200Z",
+      "id": "mood-1753073932200"
+    },
+    {
+      "mood": "angry",
+      "timestamp": "2025-07-21T04:58:53.220Z",
+      "id": "mood-1753073933220"
     }
   ],
   "distractions": [
@@ -130,69 +155,79 @@
       "trigger": "Other",
       "timestamp": "2025-07-13T12:07:12.740Z",
       "id": "distraction-1752408432740"
+    },
+    {
+      "trigger": "YouTube",
+      "timestamp": "2025-07-16T19:23:53.190Z",
+      "id": "distraction-1752693833190"
+    },
+    {
+      "trigger": "Other",
+      "timestamp": "2025-07-21T11:34:37.063Z",
+      "id": "distraction-1753097677063"
     }
   ],
   "actions": [
     {
-      "action": "daily_reminder_evening",
-      "timestamp": "2025-07-13T17:07:20.476Z",
-      "id": "action-1752426440476"
+      "action": "navigate_tracker",
+      "timestamp": "2025-07-16T19:25:23.413Z",
+      "id": "action-1752693923413"
     },
     {
-      "action": "navigate_therapist",
-      "timestamp": "2025-07-13T17:49:58.499Z",
-      "id": "action-1752428998499"
+      "action": "daily_reminder_afternoon",
+      "timestamp": "2025-07-19T09:25:08.035Z",
+      "id": "action-1752917108035"
     },
     {
-      "action": "daily_reminder_evening",
-      "timestamp": "2025-07-14T15:22:06.786Z",
-      "id": "action-1752506526786"
+      "action": "daily_reminder_morning",
+      "timestamp": "2025-07-21T04:58:14.636Z",
+      "id": "action-1753073894636"
     },
     {
-      "action": "navigate_leaderboard",
-      "timestamp": "2025-07-14T15:24:07.104Z",
-      "id": "action-1752506647104"
+      "action": "navigate_journal",
+      "timestamp": "2025-07-21T04:59:23.597Z",
+      "id": "action-1753073963597"
     },
     {
-      "action": "daily_reminder_evening",
-      "timestamp": "2025-07-14T15:29:36.588Z",
-      "id": "action-1752506976588"
+      "action": "navigate_tracker",
+      "timestamp": "2025-07-21T04:59:40.148Z",
+      "id": "action-1753073980148"
     },
     {
-      "action": "navigate_therapist",
-      "timestamp": "2025-07-14T15:30:10.350Z",
-      "id": "action-1752507010350"
+      "action": "daily_reminder_morning",
+      "timestamp": "2025-07-21T05:24:48.389Z",
+      "id": "action-1753075488389"
     },
     {
-      "action": "navigate_therapist",
-      "timestamp": "2025-07-14T15:30:14.950Z",
-      "id": "action-1752507014950"
+      "action": "navigate_tracker",
+      "timestamp": "2025-07-21T05:24:51.813Z",
+      "id": "action-1753075491813"
     },
     {
-      "action": "navigate_mood",
-      "timestamp": "2025-07-14T15:32:16.862Z",
-      "id": "action-1752507136862"
+      "action": "daily_reminder_afternoon",
+      "timestamp": "2025-07-21T11:33:18.374Z",
+      "id": "action-1753097598374"
     },
     {
-      "action": "daily_reminder_evening",
-      "timestamp": "2025-07-14T16:31:04.934Z",
-      "id": "action-1752510664934"
+      "action": "navigate_tracker",
+      "timestamp": "2025-07-21T11:35:33.807Z",
+      "id": "action-1753097733807"
     },
     {
-      "action": "navigate_mood",
-      "timestamp": "2025-07-14T16:31:09.596Z",
-      "id": "action-1752510669596"
+      "action": "daily_reminder_afternoon",
+      "timestamp": "2025-07-21T11:50:32.043Z",
+      "id": "action-1753098632043"
     }
   ],
   "habits": [
     {
       "name": "Journal daily",
-      "progress": "0/30",
+      "progress": "1/30",
       "goal": 30
     },
     {
       "name": "read book ",
-      "progress": "0/30",
+      "progress": "1/30",
       "goal": 30
     },
     {
@@ -207,12 +242,12 @@
     },
     {
       "name": "exersise",
-      "progress": "0/30",
+      "progress": "1/30",
       "goal": 30
     },
     {
       "name": "podcast and no role play or maye as less you can",
-      "progress": "0/30",
+      "progress": "1/30",
       "goal": 30
     },
     {
@@ -226,12 +261,33 @@
       "goal": 30
     }
   ],
-  "gratitude": [],
+  "gratitude": [
+    {
+      "text": "i love myself i have control my emotion and make front cortext great that's all",
+      "timestamp": "2025-07-16T19:24:13.584Z",
+      "id": "gratitude-1752693853584"
+    },
+    {
+      "text": "i am in control who i am i feel i am not somone else i am is me",
+      "timestamp": "2025-07-21T11:34:20.086Z",
+      "id": "gratitude-1753097660086"
+    }
+  ],
   "reflections": [
     {
       "text": "depressed jerk again",
       "timestamp": "2025-07-13T12:37:36.883Z",
       "id": "reflection-1752410256883"
+    },
+    {
+      "text": "happy amazing and also little guity or jerk but ok trying work and it will work soon",
+      "timestamp": "2025-07-16T19:24:42.753Z",
+      "id": "reflection-1752693882753"
+    },
+    {
+      "text": "sleepy and tired and trying be displined and controled",
+      "timestamp": "2025-07-21T11:34:00.350Z",
+      "id": "reflection-1753097640350"
     }
   ],
   "milestones": [
@@ -243,59 +299,70 @@
   "tips": [
     {
       "text": "Step away for a 2-minute stretch.",
-      "timestamp": "2025-07-13T12:52:19.221Z",
-      "id": "tip-1752411139221"
+      "timestamp": "2025-07-16T11:14:56.281Z",
+      "id": "tip-1752664496281"
     },
     {
       "text": "Step away for a 2-minute stretch.",
-      "timestamp": "2025-07-13T12:52:53.606Z",
-      "id": "tip-1752411173606"
+      "timestamp": "2025-07-16T11:15:06.190Z",
+      "id": "tip-1752664506190"
     },
     {
       "text": "Step away for a 2-minute stretch.",
-      "timestamp": "2025-07-13T12:53:33.686Z",
-      "id": "tip-1752411213686"
+      "timestamp": "2025-07-16T11:15:25.430Z",
+      "id": "tip-1752664525430"
     },
     {
       "text": "Step away for a 2-minute stretch.",
-      "timestamp": "2025-07-13T13:00:41.213Z",
-      "id": "tip-1752411641213"
+      "timestamp": "2025-07-16T19:06:24.728Z",
+      "id": "tip-1752692784728"
     },
     {
       "text": "Step away for a 2-minute stretch.",
-      "timestamp": "2025-07-13T13:01:08.999Z",
-      "id": "tip-1752411668999"
+      "timestamp": "2025-07-16T19:23:13.902Z",
+      "id": "tip-1752693793902"
     },
     {
       "text": "Step away for a 2-minute stretch.",
-      "timestamp": "2025-07-13T17:07:20.478Z",
-      "id": "tip-1752426440478"
+      "timestamp": "2025-07-19T09:25:08.036Z",
+      "id": "tip-1752917108036"
     },
     {
       "text": "Step away for a 2-minute stretch.",
-      "timestamp": "2025-07-14T15:22:06.788Z",
-      "id": "tip-1752506526788"
+      "timestamp": "2025-07-21T04:58:14.637Z",
+      "id": "tip-1753073894637"
     },
     {
       "text": "Step away for a 2-minute stretch.",
-      "timestamp": "2025-07-14T15:22:50.542Z",
-      "id": "tip-1752506570542"
+      "timestamp": "2025-07-21T05:24:48.391Z",
+      "id": "tip-1753075488391"
     },
     {
       "text": "Step away for a 2-minute stretch.",
-      "timestamp": "2025-07-14T15:29:36.590Z",
-      "id": "tip-1752506976590"
+      "timestamp": "2025-07-21T11:33:18.375Z",
+      "id": "tip-1753097598375"
     },
     {
       "text": "Step away for a 2-minute stretch.",
-      "timestamp": "2025-07-14T16:31:04.937Z",
-      "id": "tip-1752510664937"
+      "timestamp": "2025-07-21T11:50:32.045Z",
+      "id": "tip-1753098632045"
     }
   ],
   "settings": {
     "darkMode": true,
     "notifications": "on",
-    "music": "none",
-    "musicTime": 0
-  }
+    "music": "chill_beats",
+    "musicTime": 115.9958300553131
+  },
+  "journal": [
+    {
+      "text": "I'm feeling pretty happy today, even though I messed up a lot. Today was a total waste, my internet wasn't working because of my ISP and I ended up spending too much time on role-play apps and, you know, some other stuff I shouldn't be doing - I feel really guilty about it. I'm trying to get better at managing my time and staying focused on my studies and coding, which I love, but it's hard when there are so many distractions. I'm a bit worried about school too, I've been missing classes and my attendance is low, and my teacher is super strict, so I'm probably gonna get in trouble. On the bright side, I added some new habits to my routine, like trying to meditate and do some coding projects, which I'm excited to work on tomorrow. Hopefully, I can get back on track and make the most of my time, and I'm proud that I reached a 3-day streak, now I need to keep it going.",
+      "answers": {
+        "q1": "wasting time so much and also not control ing my emotions",
+        "q2": "added newhabbits",
+        "q3": "nothing"
+      },
+      "timestamp": "2025-07-16T19:21:47.896Z"
+    }
+  ]
 }

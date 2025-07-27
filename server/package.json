@@ -15,6 +15,7 @@
     "ejs": "^3.1.10",
     "expres": "^0.0.5",
     "express": "^5.1.0",
+    "malware": "^1.0.0",
     "sanitize-filename": "^1.6.3"
   },
   "description": ""

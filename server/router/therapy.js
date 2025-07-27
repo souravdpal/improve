@@ -74,7 +74,7 @@ router.post('/u', async (req, res) => {
         hobbies,
         habits: profileHabits,
         why,
-        challange: challenge, // Note: 'challange' is likely a typo; should be 'challenge'
+        challange: challenge, // Note: 'challange' is likely a typo
         motivation,
         petname,
     } = profileData;
@@ -112,15 +112,13 @@ router.post('/u', async (req, res) => {
     // Spawn Python process
     const python = spawn('python3', [pypath], { stdio: ['pipe', 'pipe', 'pipe'] });
 
-    // Prepare input for Python
     const input = {
         uname: sanitizedUname,
         mode,
-        summary: messages[0].text, // Use message text as summary
+        summary: messages[0].text,
         userSummary,
     };
 
-    // Send input to Python
     try {
         python.stdin.write(JSON.stringify(input));
         python.stdin.end();
@@ -131,6 +129,7 @@ router.post('/u', async (req, res) => {
 
     let result = '';
     let errorOutput = '';
+    let responseSent = false;
 
     python.stdout.on('data', (data) => {
         result += data.toString();
@@ -141,12 +140,18 @@ router.post('/u', async (req, res) => {
     });
 
     const timeout = setTimeout(() => {
-        python.kill();
-        res.status(504).json({ response: 'Python script timed out.' });
+        if (!responseSent) {
+            responseSent = true;
+            python.kill();
+            return res.status(504).json({ response: 'Python script timed out.' });
+        }
     }, 10000);
 
     python.on('close', (code) => {
         clearTimeout(timeout);
+        if (responseSent) return;
+        responseSent = true;
+
         if (code !== 0) {
             console.error(`Python script exited with code ${code}. Error: ${errorOutput}`);
             return res.status(500).json({

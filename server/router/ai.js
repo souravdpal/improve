@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs').promises;
+const nofs = require('fs')
 const path = require('path');
 const { spawn } = require('child_process');
 const sanitizePath = require('sanitize-filename');
@@ -169,5 +170,28 @@ router.post('/journal/:uname', async (req, res) => {
         res.status(504).json({ response: 'Python script timed out.' });
     }, 10000);
 });
+
+router.get('/his',async(req,res)=>{
+    let {username} = req.query;
+    console.log('username:' +   username)
+    let filePath  = path.join(__dirname,'..','mem',`${username}.json`)
+    if(nofs.existsSync(filePath)){
+        try{
+            let rawHis = nofs.readFileSync(filePath,"utf-8")
+            let Read1 = JSON.parse(rawHis)
+           // console.log(Read1)
+            res.status(200).json(Read1)
+
+        }catch(err){
+            console.log(err)
+            res.status(400)
+        }
+    }else{
+        console.log("no file")
+        res.status(500)
+    }
+})
+
+
 
 module.exports = router;

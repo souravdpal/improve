@@ -1,3 +1,5 @@
+
+i = 0;
 let username = localStorage.getItem('username') || 'Guest';
 const clickSound = new Audio('/sounds/click');
 const completeSound = new Audio('s');
@@ -9,6 +11,29 @@ function playClickSound() {
 function playCompleteSound() {
     completeSound.play().catch(() => console.log('Complete sound failed'));
 }
+
+let userHis = async () => {
+    fetch(`/ai/his?username=${localStorage.getItem('username')}`)
+        .then(res => res.json())
+        .then(data1 => {
+            let data = data1
+            data.map(getHis => {
+                let mood = data[i].mood
+                let userMsgHis = data[i].user_message
+                let HinaMsgHis = data[i].therapist_response
+                addMessage(username, userMsgHis, isHina = false, isLoading = false)
+                addMessage("Hina", HinaMsgHis, isHina = true, isLoading = false, isTokenanimi = false)
+                i++;
+            })
+
+
+        })
+
+
+
+
+}
+
 
 function triggerCelebration() {
     const canvas = document.getElementById('celebration');
@@ -90,10 +115,10 @@ function initializeChat() {
         console.error('Message input element not found');
     }
 
-    addMessage('HINA', `Hello, **${user}**! I'm **HINA**, your AI therapist. How can I **help** you today?`, true);
+    addMessage('HINA', `Hello, **${user}**! I'm **HINA**, your AI therapist. How can I **help** you today?`, isHina = true, isLoading = false, isTokenanimi = false);
 }
 
-async function addMessage(sender, text, isHina = false, isLoading = false) {
+async function addMessage(sender, text, isHina = false, isLoading = false, isTokenanimi = true) {
     const messages = document.getElementById('chat-messages');
     if (!messages) {
         console.error('Chat messages container not found');
@@ -126,7 +151,7 @@ async function addMessage(sender, text, isHina = false, isLoading = false) {
     messages.appendChild(messageDiv);
     messages.scrollTop = messages.scrollHeight;
 
-    if (isHina && !isLoading) {
+    if (isHina && !isLoading && isTokenanimi) {
         const tokens = p.innerHTML.split(/(\s+)/).filter(Boolean);
         p.innerHTML = '';
         for (let i = 0; i < tokens.length; i++) {
@@ -137,6 +162,7 @@ async function addMessage(sender, text, isHina = false, isLoading = false) {
             await new Promise(resolve => setTimeout(resolve, 50));
             span.style.animation = 'tokenFade 0.3s forwards';
         }
+
     }
 
     if (!isHina && !isLoading) {
@@ -270,3 +296,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     initializeChat();
 });
+
+let run = async () => {
+    let runmsg = await addMessage("hina" , ",",true,true)
+    setTimeout(() => {
+        runmsg.remove()
+        userHis()
+
+    }, 1300)
+    
+}
+    
+
+
+setTimeout(() => {
+    run()
+}, 2);
+
+
+setInterval(() => { userHis() }, 100000);
+
+
+
+//addMessage("Hina" , "hey user" , isHina=true)

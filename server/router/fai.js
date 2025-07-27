@@ -86,8 +86,28 @@ router.get('/save/:username', async (req, res) => {
             const indexExists = await fs.access(indexPath).then(() => true).catch(() => false);
             if (!indexExists) {
                 // For new users, return an empty array instead of erroring
-                console.log(`No character index found for ${sanitizedUsername}, returning empty list`);
-                return res.status(200).json({ char: [] });
+                let newdathina = {
+                    CharId: "HINA-ai-op",
+                    name: "Hina",
+                    fallBackDAT: null
+
+                }
+
+
+                let maker = await fs.writeFile(indexPath, JSON.stringify(newdathina,null,2), "utf-8")
+                if (maker) {
+                    const rawRead = await fs.readFile(indexPath, 'utf-8');
+                    let charData = JSON.parse(rawRead);
+                    if (!Array.isArray(charData)) {
+                        charData = [charData];
+                    }
+                    res.status(200).json({ char: charData });
+                } else {
+                    console.log(`No character index found for ${sanitizedUsername}, returning empty list`);
+                    return res.status(200).json({ char: [] });
+                }
+
+
             }
 
             const rawRead = await fs.readFile(indexPath, 'utf-8');

@@ -1,0 +1,329 @@
+{
+  "user": {
+    "name": "shrutu",
+    "streak": 5,
+    "currentMood": "happy",
+    "goal": "Overcome procrastination and build discipline",
+    "streakHistory": [
+      1,
+      4,
+      5
+    ],
+    "avatar": "data:image/png;base64,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",
+    "playlist": [
+      {
+        "tag": "rain",
+        "url": "https://www.youtube.com/watch?v=yIQd2Ya0Ziw"
+      },
+      {
+        "tag": "thunderrain",
+        "url": "https://www.youtube.com/watch?v=qlLkTmoKjOY"
+      },
+      {
+        "tag": "forest",
+        "url": "https://www.youtube.com/watch?v=IvjMgVS6kng"
+      },
+      {
+        "tag": "salvatore",
+        "url": "https://www.youtube.com/watch?v=GVQON-muEFc"
+      },
+      {
+        "tag": "cry",
+        "url": "https://www.youtube.com/watch?v=BfU1iB7UBH0"
+      },
+      {
+        "tag": "rest_time",
+        "url": "https://www.youtube.com/watch?v=EyyfRW3WC5c"
+      },
+      {
+        "tag": "interseteller",
+        "url": "https://www.youtube.com/watch?v=p2zMXSXhZ9M"
+      },
+      {
+        "tag": "ambient_calming",
+        "url": "https://www.youtube.com/watch?v=xDih5SwFs_c"
+      },
+      {
+        "tag": "calm_anxiety",
+        "url": "https://www.youtube.com/watch?v=zPyg4N7bcHM"
+      },
+      {
+        "tag": "motivation_speech",
+        "url": "https://www.youtube.com/watch?v=VfNCUm7_FMU"
+      },
+      {
+        "tag": "madra_uchiha_speech",
+        "url": "https://www.youtube.com/watch?v=ZR377rPci64"
+      },
+      {
+        "tag": "hope",
+        "url": "https://www.youtube.com/watch?v=xfzhezl_jts"
+      },
+      {
+        "tag": "world_best_speech",
+        "url": "https://www.youtube.com/watch?v=UF8uR6Z6KLc"
+      },
+      {
+        "tag": "elon_musk",
+        "url": "https://www.youtube.com/watch?v=k9zTr2MAFRg"
+      },
+      {
+        "tag": "calmdown",
+        "url": "https://www.youtube.com/watch?v=0L38Z9hIi5s"
+      },
+      {
+        "tag": "study",
+        "url": "https://www.youtube.com/watch?v=idRi7ob_cQw"
+      },
+      {
+        "tag": "coding",
+        "url": "https://www.youtube.com/watch?v=Yd7vDterctQ"
+      },
+      {
+        "tag": "chill_beats",
+        "url": "https://www.youtube.com/watch?v=sF80I-TQiW0"
+      },
+      {
+        "tag": "lucid_dreams",
+        "url": "https://www.youtube.com/watch?v=ff90ZV3OEsg"
+      }
+    ]
+  },
+  "tasks": [],
+  "pomodoro": {
+    "tasks": [
+      {
+        "name": "w",
+        "duration": 25,
+        "break": 5,
+        "completed": true,
+        "timestamp": "2025-07-22T16:52:09.836Z",
+        "timeSpent": 34,
+        "isActive": true
+      },
+      {
+        "name": "s",
+        "duration": 25,
+        "break": 5,
+        "completed": true,
+        "timestamp": "2025-07-22T16:52:35.699Z",
+        "timeSpent": 30,
+        "isActive": true
+      }
+    ],
+    "history": [
+      {
+        "name": "s",
+        "duration": 25,
+        "completedAt": "2025-07-22T17:27:36.564Z"
+      },
+      {
+        "name": "w",
+        "duration": 25,
+        "completedAt": "2025-07-22T17:27:39.541Z"
+      }
+    ],
+    "settings": {
+      "workDuration": 25,
+      "breakDuration": 5
+    }
+  },
+  "moods": [
+    {
+      "mood": "happy",
+      "timestamp": "2025-07-21T11:53:42.672Z",
+      "id": "mood-1753098822672"
+    },
+    {
+      "mood": "neutral",
+      "timestamp": "2025-07-22T13:54:39.908Z",
+      "id": "mood-1753192479908"
+    },
+    {
+      "mood": "happy",
+      "timestamp": "2025-07-22T15:20:53.182Z",
+      "id": "mood-1753197653182"
+    },
+    {
+      "mood": "excited",
+      "timestamp": "2025-07-22T15:21:07.406Z",
+      "id": "mood-1753197667406"
+    },
+    {
+      "mood": "happy",
+      "timestamp": "2025-07-22T17:28:47.438Z",
+      "id": "mood-1753205327438"
+    }
+  ],
+  "distractions": [
+    {
+      "trigger": "Phone",
+      "timestamp": "2025-07-21T11:54:04.566Z",
+      "id": "distraction-1753098844566"
+    },
+    {
+      "trigger": "YouTube",
+      "timestamp": "2025-07-22T17:27:08.898Z",
+      "id": "distraction-1753205228898"
+    }
+  ],
+  "actions": [
+    {
+      "action": "daily_reminder_evening",
+      "timestamp": "2025-07-22T16:10:32.096Z",
+      "id": "action-1753200632096"
+    },
+    {
+      "action": "generate_avatar",
+      "timestamp": "2025-07-22T16:10:32.107Z",
+      "id": "action-1753200632107"
+    },
+    {
+      "action": "daily_reminder_evening",
+      "timestamp": "2025-07-22T16:10:32.683Z",
+      "id": "action-1753200632683"
+    },
+    {
+      "action": "generate_avatar",
+      "timestamp": "2025-07-22T16:10:32.700Z",
+      "id": "action-1753200632700"
+    },
+    {
+      "action": "daily_reminder_evening",
+      "timestamp": "2025-07-22T16:10:33.566Z",
+      "id": "action-1753200633566"
+    },
+    {
+      "action": "generate_avatar",
+      "timestamp": "2025-07-22T16:10:33.572Z",
+      "id": "action-1753200633572"
+    },
+    {
+      "action": "daily_reminder_evening",
+      "timestamp": "2025-07-22T16:10:34.317Z",
+      "id": "action-1753200634317"
+    },
+    {
+      "action": "generate_avatar",
+      "timestamp": "2025-07-22T16:10:34.352Z",
+      "id": "action-1753200634352"
+    },
+    {
+      "action": "daily_reminder_evening",
+      "timestamp": "2025-07-22T16:10:34.753Z",
+      "id": "action-1753200634753"
+    },
+    {
+      "action": "generate_avatar",
+      "timestamp": "2025-07-22T16:10:34.775Z",
+      "id": "action-1753200634775"
+    }
+  ],
+  "habits": [
+    {
+      "name": "journal",
+      "progress": "5/30",
+      "goal": 30
+    },
+    {
+      "name": "no fap",
+      "progress": "0/30",
+      "goal": 30
+    }
+  ],
+  "gratitude": [
+    {
+      "text": "j",
+      "timestamp": "2025-07-22T16:40:29.027Z",
+      "id": "gratitude-1753202429027"
+    },
+    {
+      "text": "s",
+      "timestamp": "2025-07-22T16:52:16.962Z",
+      "id": "gratitude-1753203136962"
+    },
+    {
+      "text": "ni",
+      "timestamp": "2025-07-22T17:27:02.529Z",
+      "id": "gratitude-1753205222529"
+    }
+  ],
+  "reflections": [
+    {
+      "text": "i feel cute today",
+      "timestamp": "2025-07-21T11:51:43.687Z",
+      "id": "reflection-1753098703687"
+    },
+    {
+      "text": "c",
+      "timestamp": "2025-07-22T15:10:14.668Z",
+      "id": "reflection-1753197014668"
+    }
+  ],
+  "milestones": [
+    {
+      "text": "Reached 5-day streak! 🎉",
+      "timestamp": "2025-07-22T17:27:39.541Z",
+      "id": "milestone-1753205259541"
+    }
+  ],
+  "tips": [
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-22T16:02:03.138Z",
+      "id": "tip-1753200123138"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-22T16:02:05.500Z",
+      "id": "tip-1753200125500"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-22T16:02:13.269Z",
+      "id": "tip-1753200133270"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-22T16:10:29.993Z",
+      "id": "tip-1753200629993"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-22T16:10:31.835Z",
+      "id": "tip-1753200631835"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-22T16:10:32.096Z",
+      "id": "tip-1753200632096"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-22T16:10:32.683Z",
+      "id": "tip-1753200632684"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-22T16:10:33.566Z",
+      "id": "tip-1753200633566"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-22T16:10:34.319Z",
+      "id": "tip-1753200634319"
+    },
+    {
+      "text": "Take 5 deep breaths to reset.",
+      "timestamp": "2025-07-22T16:10:34.755Z",
+      "id": "tip-1753200634755"
+    }
+  ],
+  "settings": {
+    "darkMode": true,
+    "notifications": "on",
+    "music": "rain",
+    "musicTime": 26495.521380990464
+  },
+  "journal": []
+}

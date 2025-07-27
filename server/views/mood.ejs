@@ -1,72 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talk to AI Friend - AI Therapist</title>
-    <link rel="stylesheet" href="/css/tracker.css">
+    <title>AI Chat Companion</title>
     <link rel="stylesheet" href="/css/fai.css">
-
+    <style src="/js/fai.js"></style>
 </head>
+<body class="dark-mode">
+    <div class="container">
+        <aside class="sidebar">
+            <h1>AI Chat Companion</h1>
+            <h2>Friends</h2>
+            <div id="friend-list"></div>
+            <button id="add-friend-btn" class="add-friend-btn">Add Friend</button>
+        </aside>
 
-<body>
-    <div class="talk-container">
-        <header class="talk-header">
-            <a class="nav-icon" onclick="io()">←</a>
-            <h1>Talk to AI Friend</h1>
-        </header>
-        <script>
-            function io() {
-                window.history.back();
-            }
-        </script>
-        <div class="friend-selector">
-            <div class="friend-scroll" id="friend-scroll">
-                <!-- Friends will be appended here -->
+        <main class="chat-area">
+            <div id="chat-header">Select a friend to start chatting!</div>
+            <div id="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Type your message...">
+                <button id="send-btn">Send</button>
             </div>
-            <button class="action-btn" onclick="openFriendModal()">Make Friend</button>
-        </div>
-        <div class="chat-box" id="chat-box">
-            <!-- Chat messages will be appended here -->
-        </div>
-        <div class="chat-input">
-            <input type="text" id="chat-message" placeholder="Talk to your friend...">
-            <button class="action-btn" onclick="sendMessage()">Send</button>
-        </div>
-        <div class="talk-modal" id="friendModal">
-            <div class="talk-content">
-                <h2>Create New Friend</h2>
-                <input type="text" id="friend-name" placeholder="Name (e.g., HINA)">
+        </main>
+    </div>
+
+    <!-- Add Friend Popup -->
+    <div id="add-friend-popup" class="popup">
+        <div class="popup-content">
+            <h2>Create New Friend</h2>
+            <form id="add-friend-form">
+                <label for="friend-name">Name:</label>
+                <input type="text" id="friend-name" required>
+                
+                <label for="friend-gender">Gender:</label>
                 <select id="friend-gender">
                     <option value="female">Female</option>
                     <option value="male">Male</option>
                     <option value="other">Other</option>
+                    <option value="unspecified">Unspecified</option>
                 </select>
-                <input type="text" id="friend-behavior" placeholder="Behavior (e.g., Empathetic, witty)">
-                <input type="text" id="friend-works" placeholder="Works (e.g., Therapist, coach)">
-                <input type="memo" id="friend-memo"
-                    placeholder="what you want your freind should know? (e.g., your hobbies?)">
-                <button class="action-btn" onclick="saveFriend()">Save</button>
-                <button class="action-btn" onclick="closeFriendModal()">Cancel</button>
-            </div>
+
+                <label for="friend-age">Age:</label>
+                <input type="number" id="friend-age" min="1">
+
+                <label for="friend-behavior">Behavior:</label>
+                <input type="text" id="friend-behavior" placeholder="e.g., friendly, witty">
+
+                <label for="friend-work">Occupation:</label>
+                <input type="text" id="friend-work" placeholder="e.g., artist, engineer">
+
+                <label for="friend-memo">Memo:</label>
+                <textarea id="friend-memo" placeholder="Any special notes..."></textarea>
+
+                <div class="popup-buttons">
+                    <button type="button" id="cancel-friend-btn">Cancel</button>
+                    <button type="submit" id="create-friend-btn">Create Friend</button>
+                </div>
+            </form>
         </div>
-        <div class="talk-modal" id="viewModal">
-            <div class="talk-content">
-                <h2>Friend Details</h2>
-                <p id="view-name"></p>
-                <p id="view-gender"></p>
-                <p id="view-behavior"></p>
-                <p id="view-works"></p>
-                <button class="action-btn" onclick="closeViewModal()">Close</button>
-            </div>
-        </div>
-        <canvas id="celebration"></canvas>
     </div>
 
-    <script defer src="/js/fai.js" defer></script>
-    <script defer src="/js/music.js"></script>
-    <script defer src="https://www.youtube.com/iframe_api"></script>
-</body>
+    <!-- Friends List Popup -->
+    <div id="friends-list-popup" class="popup">
+        <div class="popup-content">
+            <h2>All Friends</h2>
+            <div id="friends-list-content"></div>
+            <button id="close-friends-btn" class="close-btn">Close</button>
+        </div>
+    </div>
 
+    <!-- Friend Details Popup -->
+    <div id="friend-details-popup" class="popup">
+        <div class="popup-content">
+            <h2>Friend Details</h2>
+            <div id="friend-details-content"></div>
+            <button id="close-details-btn" class="close-btn">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addFriendBtn = document.getElementById('add-friend-btn');
+            const addFriendPopup = document.getElementById('add-friend-popup');
+            const cancelFriendBtn = document.getElementById('cancel-friend-btn');
+            const addFriendForm = document.getElementById('add-friend-form');
+            const username = 'testuser'; // Replace with actual username from session/auth
+
+            // Show add friend popup
+            addFriendBtn.addEventListener('click', () => {
+                addFriendPopup.style.display = 'flex';
+            });
+
+            // Close popup
+            cancelFriendBtn.addEventListener('click', () => {
+                addFriendPopup.style.display = 'none';
+                addFriendForm.reset();
+            });
+
+            // Submit new friend
+            addFriendForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const friendData = {
+                    id: Date.now().toString(), // Simple ID generation
+                    name: document.getElementById('friend-name').value,
+                    gender: document.getElementById('friend-gender').value,
+                    age: document.getElementById('friend-age').value,
+                    behavior: document.getElementById('friend-behavior').value,
+                    work: document.getElementById('friend-work').value,
+                    memo: document.getElementById('friend-memo').value
+                };
+
+                try {
+                    const response = await fetch(`/save/${friendData.id}/${username}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(friendData)
+                    });
+                    const result = await response.json();
+                    if (response.ok) {
+                        alert('Friend created successfully!');
+                        addFriendPopup.style.display = 'none';
+                        addFriendForm.reset();
+                        loadFriends(); // Refresh friend list
+                    } else {
+                        alert(`Error: ${result.error}`);
+                    }
+                } catch (err) {
+                    alert('Failed to create friend. Please try again.');
+                }
+            });
+
+            // Load friends list
+            async function loadFriends() {
+                try {
+                    const response = await fetch(`/save/${username}`);
+                    const data = await response.json();
+                    const friendList = document.getElementById('friend-list');
+                    friendList.innerHTML = '';
+                    data.char.forEach(friend => {
+                        const friendDiv = document.createElement('div');
+                        friendDiv.className = 'friend-item';
+                        friendDiv.textContent = friend.name;
+                        friendDiv.addEventListener('click', () => showFriendDetails(friend));
+                        friendList.appendChild(friendDiv);
+                    });
+                } catch (err) {
+                    console.error('Error loading friends:', err);
+                }
+            }
+
+            // Show friend details (simplified)
+            function showFriendDetails(friend) {
+                const detailsPopup = document.getElementById('friend-details-popup');
+                const detailsContent = document.getElementById('friend-details-content');
+                detailsContent.innerHTML = `
+                    <p><strong>Name:</strong> ${friend.name}</p>
+                    <p><strong>ID:</strong> ${friend.CharId}</p>
+                `;
+                detailsPopup.style.display = 'flex';
+                document.getElementById('close-details-btn').addEventListener('click', () => {
+                    detailsPopup.style.display = 'none';
+                });
+            }
+
+            loadFriends(); // Initial load
+        });
+    </script>
+</body>
 </html>
