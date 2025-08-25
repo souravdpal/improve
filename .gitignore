@@ -12,4 +12,6 @@ Thumbs.db
 .vscode/
 .env
 /server/database
+/server/database
+/server/mem
 
