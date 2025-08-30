@@ -162,8 +162,8 @@ function showError(message) {
     }, 3000);
 }
 
-const clickSound = new Audio('/sounds/click.mp3');
-const completeSound = new Audio('/sounds/fun.mp3');
+const clickSound = new Audio('/sounds/click');
+const completeSound = new Audio('/sounds/fun');
 
 function playClickSound() {
     clickSound.play().catch(() => console.log('Click sound failed'));
@@ -1096,6 +1096,7 @@ function searchHabits() {
 
 function completeHabit(name) {
     updateHomdata('habit_complete', name);
+    updateHabitList()
 }
 
 function removeHabit(name) {
@@ -1202,7 +1203,7 @@ function updateSpecificUI(components) {
             if (el) el.textContent = homdata.user.name;
         });
         const greeting = document.getElementById('greeting');
-        if (greeting) greeting.textContent = `Welcome back, ${homdata.user.name}!`;
+        if (greeting) greeting.textContent = `Welcome back, ${localStorage.getItem('username')}!`;
         const profileGoal = document.getElementById('profile-goal');
         if (profileGoal) profileGoal.textContent = homdata.user.goal;
         const profileStreak = document.getElementById('profile-streak');
@@ -1466,4 +1467,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Initialization error:', error);
         showError('An error occurred during initialization. Please try again.');
     }
+
+
+    let gratitudeLoad = async () => {
+        let basic = homdata.gratitude
+        basic.forEach(el => {
+            document.getElementById('graDiv').innerHTML +=`<li  class= 'gradC'>${el.text}</li>
+             
+            
+            `
+             document.getElementById('graDivPop').innerHTML +=`<li  class= 'gradC'>${el.text}</li>
+             
+            
+            `
+
+        });
+
+
+    }
+    gratitudeLoad()
+
 });
+

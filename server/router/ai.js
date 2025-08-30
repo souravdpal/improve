@@ -11,6 +11,7 @@ const pypath = path.join(__dirname, '..', 'python', 'therapy.py');
 router.post('/journal/:uname', async (req, res) => {
     const { summary, answers = {}, mode } = req.body;
     const { uname } = req.params;
+    console.log(summary + answers + uname)
 
     // Sanitize uname
     const sanitizedUname = sanitizePath(uname);
@@ -34,6 +35,7 @@ router.post('/journal/:uname', async (req, res) => {
     // Read user goals file
     const goalsFilePath = path.join(__dirname, '..', 'database', 'user', `${sanitizedUname}-goals.json`);
     let goalsData;
+    console.log(goalsData)
     try {
         await fs.access(goalsFilePath);
         goalsData = JSON.parse(await fs.readFile(goalsFilePath, 'utf-8'));
@@ -129,7 +131,8 @@ router.post('/journal/:uname', async (req, res) => {
 
     let result = '';
     let errorOutput = '';
-
+    console.log(result)
+    console.log(input)
     // Capture stdout
     python.stdout.on('data', (data) => {
         result += data.toString();

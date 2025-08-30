@@ -39,7 +39,7 @@ app.get("/sounds/:id", (req, res) => {
   let id = req.params.id;
   res.sendFile(path.join(__dirname, "..", "public", "assets", "sounds", `${id}.mp3`));
 });
-app.get("/Home",(req,res)=>{
+app.get("/Home",(req,res)=>{mp
   res.render('home')
 })
 
@@ -234,11 +234,11 @@ app.use('/data', datatracker)
 console.log("✅ Everything above listen() passed...");
 
 
-app.use((req, res) => {
-  console.log('user hit the $)$')
+/*app.use((req, res) => {
+  console.log('user hit the 404')
   // You can show a custom message, log the access, or even redirect
   res.status(404).render('404');
-});
+});*/
 app.listen(port, () => {
   console.log(`Your app is listening at http://localhost:${port}`);
 });

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="container">
         <!-- Welcome Card -->
@@ -96,7 +98,9 @@
                 </select>
                 <div class="trigger-log" id="trigger-log">
                     <p>Recent triggers: None</p>
-                    <div class="progress-bar"><div></div></div>
+                    <div class="progress-bar">
+                        <div></div>
+                    </div>
                 </div>
                 <div class="pomodoro-history scrollable"></div>
             </div>
@@ -141,9 +145,52 @@
             <!-- Gratitude Journal -->
             <div class="card clickable" data-modal="gratitudeModal">
                 <h3><i class="fas fa-heart"></i> Gratitude Journal</h3>
-                <textarea id="gratitude" placeholder="What are you grateful for?"></textarea>
-                <div class="gratitude-list scrollable"></div>
-                <button class="broom-btn" data-tooltip="Clear Gratitude" onclick="clearList('gratitude')"><i class="fas fa-broom"></i></button>
+                <textarea onclick=" gratitudeLoad()"id="gratitude" placeholder="What are you grateful for?"></textarea>
+                <div class="gratitude-list scrollable" id="graDiv"> </div>
+
+
+                <style>
+                    .FFradC {
+                        list-style-type: none;
+                        padding: 10px 14px;
+                        margin: 6px 0;
+                        border-radius: 10px;
+                        transition: 0.3s ease;
+                        cursor: pointer;
+                        font-family: system-ui, sans-serif;
+                        font-size: 15px;
+                    }
+
+                    /* Light mode */
+                    @media (prefers-color-scheme: light) {
+                        .gradC {
+                            background: #f4f4f4;
+                            color: #222;
+                            border: 1px solid #ddd;
+                        }
+
+                        .gradC:hover {
+                            background: #e6e6e6;
+                            transform: translateX(5px);
+                        }
+                    }
+
+                    /* Dark mode */
+                    @media (prefers-color-scheme: dark) {
+                        .gradC {
+                            background: #1e1e1e;
+                            color: #f0f0f0;
+                            border: 1px solid #333;
+                        }
+
+                        .gradC:hover {
+                            background: #2a2a2a;
+                            transform: translateX(5px);
+                        }
+                    }
+                </style>
+                <button class="broom-btn" data-tooltip="Clear Gratitude" onclick="clearList('gratitude')"><i
+                        class="fas fa-broom"></i></button>
             </div>
 
             <!-- Mood Reflection -->
@@ -151,14 +198,16 @@
                 <h3><i class="fas fa-comment"></i> Mood Reflection</h3>
                 <textarea id="mood-reflection" placeholder="Reflect on your day"></textarea>
                 <div class="reflection-list scrollable"></div>
-                <button class="broom-btn" data-tooltip="Clear Reflections" onclick="clearList('reflection')"><i class="fas fa-broom"></i></button>
+                <button class="broom-btn" data-tooltip="Clear Reflections" onclick="clearList('reflection')"><i
+                        class="fas fa-broom"></i></button>
             </div>
 
             <!-- Milestones -->
             <div class="card clickable" data-modal="milestoneModal">
                 <h3><i class="fas fa-star"></i> Milestones</h3>
                 <div class="milestones scrollable"></div>
-                <button class="broom-btn" data-tooltip="Clear Milestones" onclick="clearList('milestones')"><i class="fas fa-broom"></i></button>
+                <button class="broom-btn" data-tooltip="Clear Milestones" onclick="clearList('milestones')"><i
+                        class="fas fa-broom"></i></button>
             </div>
         </div>
 
@@ -190,7 +239,8 @@
             <div class="card clickable" data-modal="moodReflectionCardModal">
                 <h3><i class="fas fa-comment-alt"></i> Mood Reflections</h3>
                 <ul id="mood-reflection-list" class="scrollable"></ul>
-                <button class="action-btn small-btn" onclick="toggleModal('moodReflectionModal', true)">Add Reflection</button>
+                <button class="action-btn small-btn" onclick="toggleModal('moodReflectionModal', true)">Add
+                    Reflection</button>
             </div>
         </div>
     </div>
@@ -208,6 +258,12 @@
         <div class="nav-icon" data-feature="leaderboard" data-tooltip="Leaderboard"><i class="fas fa-trophy"></i></div>
     </div>
 
+
+
+
+
+
+
     <!-- Modals -->
     <!-- Pomodoro Modal -->
     <div class="modal" id="pomodoroModal">
@@ -222,7 +278,7 @@
                 <option value="high">High Priority</option>
             </select>
             <div class="modal-actions">
-                <button class="modal-btn" onclick="addPomodoroTask()">Add</button>
+                <button class="modal-btn" onclick="addPomodoroTask()  ,updatePomodoroList()">Add</button>
                 <button class="modal-btn close-btn" onclick="toggleModal('pomodoroModal', false)">Close</button>
             </div>
         </div>
@@ -235,7 +291,7 @@
             <input type="text" id="newHabit" placeholder="Habit name">
             <input type="number" id="habitGoal" placeholder="Goal (days, min 7)" min="7">
             <div class="modal-actions">
-                <button class="modal-btn" onclick="addHabit()">Add</button>
+                <button class="modal-btn" onclick="addHabit() , updateHabitList()">Add</button>
                 <button class="modal-btn close-btn" onclick="toggleModal('habitModal', false)">Close</button>
             </div>
         </div>
@@ -359,7 +415,9 @@
             </select>
             <div class="trigger-log" id="trigger-log-popup">
                 <p>Recent triggers: None</p>
-                <div class="progress-bar"><div></div></div>
+                <div class="progress-bar">
+                    <div></div>
+                </div>
             </div>
             <div class="pomodoro-history scrollable"></div>
             <div class="modal-actions">
@@ -428,8 +486,9 @@
         <div class="modal-content card-modal-content">
             <h3><i class="fas fa-heart"></i> Gratitude Journal</h3>
             <textarea id="gratitude-popup" placeholder="What are you grateful for?"></textarea>
-            <div class="gratitude-list scrollable"></div>
-            <button class="broom-btn" data-tooltip="Clear Gratitude" onclick="clearList('gratitude')"><i class="fas fa-broom"></i></button>
+            <div class="gratitude-list scrollable"  id="graDivPop"></div>
+            <button class="broom-btn" data-tooltip="Clear Gratitude" onclick="clearList('gratitude')"><i
+                    class="fas fa-broom"></i></button>
             <div class="modal-actions">
                 <button class="modal-btn close-btn" onclick="toggleModal('gratitudeModal', false)">Close</button>
             </div>
@@ -442,7 +501,8 @@
             <h3><i class="fas fa-comment"></i> Mood Reflection</h3>
             <textarea id="mood-reflection-popup" placeholder="Reflect on your day"></textarea>
             <div class="reflection-list scrollable"></div>
-            <button class="broom-btn" data-tooltip="Clear Reflections" onclick="clearList('reflection')"><i class="fas fa-broom"></i></button>
+            <button class="broom-btn" data-tooltip="Clear Reflections" onclick="clearList('reflection')"><i
+                    class="fas fa-broom"></i></button>
             <div class="modal-actions">
                 <button class="modal-btn close-btn" onclick="toggleModal('reflectionModal', false)">Close</button>
             </div>
@@ -454,9 +514,11 @@
         <div class="modal-content card-modal-content">
             <h3><i class="fas fa-comment-alt"></i> Mood Reflections</h3>
             <ul id="mood-reflection-list-popup" class="scrollable"></ul>
-            <button class="action-btn small-btn" onclick="toggleModal('moodReflectionModal', true)">Add Reflection</button>
+            <button class="action-btn small-btn" onclick="toggleModal('moodReflectionModal', true)">Add
+                Reflection</button>
             <div class="modal-actions">
-                <button class="modal-btn close-btn" onclick="toggleModal('moodReflectionCardModal', false)">Close</button>
+                <button class="modal-btn close-btn"
+                    onclick="toggleModal('moodReflectionCardModal', false)">Close</button>
             </div>
         </div>
     </div>
@@ -478,7 +540,8 @@
         <div class="modal-content card-modal-content">
             <h3><i class="fas fa-star"></i> Milestones</h3>
             <div class="milestones scrollable"></div>
-            <button class="broom-btn" data-tooltip="Clear Milestones" onclick="clearList('milestones')"><i class="fas fa-broom"></i></button>
+            <button class="broom-btn" data-tooltip="Clear Milestones" onclick="clearList('milestones')"><i
+                    class="fas fa-broom"></i></button>
             <div class="modal-actions">
                 <button class="modal-btn close-btn" onclick="toggleModal('milestoneModal', false)">Close</button>
             </div>
@@ -529,4 +592,5 @@
 
     <script src="/js/home.js"></script>
 </body>
+
 </html>
